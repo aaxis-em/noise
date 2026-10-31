@@ -6,15 +6,15 @@ A 3D noise map of Kathmandu and Lalitpur. It models road traffic, aircraft at Tr
 raw/            OpenStreetMap Overpass extracts + Terrarium DEM tiles (inputs, ~200 MB)
 model/build.py  noise model: sources, propagation, hourly profiles, exposure stats
 model/flightpaths.py  VNKT procedures from CAAN AIP Nepal (RNP AR approaches, SIDs, missed approaches, VFR passes, heli-lanes)
-web/            viewer (index.html) + flight simulator (sim.js)
-web/data/       model output: grid/dem/buildings/roads packed as lossless PNG byte streams + meta.json
+docs/           viewer (index.html) + flight simulator (sim.js)
+docs/data/      model output: grid/dem/buildings/roads packed as lossless PNG byte streams + meta.json
 ```
 
 ## Run
 
 ```bash
-python3 model/build.py && python3 model/pack.py   # rebuild web/data from raw/ (~15 s)
-cd web && python3 -m http.server 8765
+python3 model/build.py && python3 model/pack.py   # rebuild docs/data from raw/ (~2 min)
+cd docs && python3 -m http.server 8765
 # open http://localhost:8765/
 ```
 

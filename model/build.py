@@ -2,7 +2,7 @@
 Screening-level environmental noise model for Kathmandu + Lalitpur.
 
 Inputs  : OpenStreetMap extracts in ../raw (Overpass JSON) + Terrarium DEM tiles.
-Outputs : ../web/data/*  (binary grids + JSON consumed by the Three.js viewer)
+Outputs : ../docs/data/*  (binary grids + JSON consumed by the Three.js viewer)
 
 Sources modelled
   road      line sources per OSM highway class, Kathmandu-calibrated emission at 10 m
@@ -21,7 +21,7 @@ from matplotlib.path import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, "..", "raw")
-OUT = os.path.join(HERE, "..", "web", "data")
+OUT = os.path.join(HERE, "..", "docs", "data")
 os.makedirs(OUT, exist_ok=True)
 
 S, W, N, E = 27.635, 85.265, 27.765, 85.405

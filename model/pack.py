@@ -4,7 +4,7 @@ import json, os
 import numpy as np
 from PIL import Image
 
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "web", "data")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "docs", "data")
 WIDTH = 1024
 meta_path = os.path.join(OUT, "meta.json")
 meta = json.load(open(meta_path))
