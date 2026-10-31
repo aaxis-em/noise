@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kathmandu–Lalitpur Noise Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Full-bleed valley. One small header (what am I looking at), one tool row (how do I move),
+   one analysis card that appears only when a spot is chosen, one 24 h strip. */
+:root {
+  color-scheme: dark;
+  --ink: #0a0d12;
+  --panel: rgba(14, 18, 25, 0.88);
+  --panel-solid: #12161d;
+  --line: #262d39;
+  --line-2: #3a4352;
+  --fg: #ece8df;
+  --fg-2: #b7b6ae;
+  --muted: #858a96;
+  --accent: #f8b425;
+  --road: #3987e5; --air: #d95926; --act: #199e70; --night: #9085e9; --bg-src: #5a6070;
+  --good: #3fae6a; --bad: #e5534b;
+  --f-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --f-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --gap: 14px;
+}
+html, body { height: 100%; margin: 0; }
+body { background: var(--ink); color: var(--fg); font: 14px/1.45 var(--f-body); overflow: hidden; }
+[hidden] { display: none !important; }
+#scene { position: fixed; inset: 0; touch-action: none; }
+#scene canvas { display: block; }
+#labels { position: fixed; inset: 0; pointer-events: none; }
+.lbl { font: 500 10.5px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: #d9d6cc;
+  text-shadow: 0 0 3px #000, 0 0 6px #000; white-space: nowrap; }
+.lbl.big { font: italic 17px/1 var(--f-display); letter-spacing: 0; text-transform: none; color: #fff6e2; }
+
+.panel { position: fixed; background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); }
+button { font: inherit; color: inherit; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.eyebrow { font: 500 10px/1.3 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+
+#bar { top: calc(var(--gap) + env(safe-area-inset-top, 0px)); left: max(var(--gap), env(safe-area-inset-left, 0px)); width: 332px; box-sizing: border-box;
+  padding: 14px; display: grid; gap: 12px; }
+h1 { margin: 0; font: 400 24px/1.05 var(--f-display); letter-spacing: -.01em; text-wrap: balance; }
+h1 em { color: var(--accent); }
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: #0b0e13; border: 1px solid var(--line); border-radius: 8px; padding: 3px; gap: 3px; }
+.seg button { all: unset; cursor: pointer; text-align: center; padding: 6px 4px; border-radius: 6px; font: 500 12px/1.1 var(--f-body); color: var(--fg-2); }
+.seg button[aria-pressed="true"] { background: #232a36; color: var(--fg); box-shadow: inset 0 0 0 1px var(--line-2); }
+.seg button:focus-visible { outline: 2px solid var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 999px; border: 1px solid var(--line);
+  font-size: 11.5px; color: var(--fg); background: #0d1117; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+.chip[aria-pressed="false"] { color: var(--muted); }
+.chip[aria-pressed="false"] i { background: transparent; box-shadow: inset 0 0 0 1.5px var(--c); }
+.chip:focus-visible { outline: 2px solid var(--accent); }
+.legend { display: grid; grid-template-columns: repeat(9, 1fr); gap: 2px; }
+.legend span { height: 8px; border-radius: 2px; }
+.legend-ticks { display: grid; grid-template-columns: repeat(9, 1fr); font: 9.5px/1 var(--f-mono); color: var(--muted); margin-top: 4px; }
+.hint { font-size: 11.5px; color: var(--muted); margin: 0; }
+#barToggle { display: none; }
+
+#tools { top: calc(var(--gap) + env(safe-area-inset-top, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); padding: 4px; display: flex; gap: 4px; align-items: center; }
+.tb { all: unset; cursor: pointer; height: 32px; min-width: 32px; padding: 0 8px; box-sizing: border-box; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  color: var(--fg-2); font-size: 12.5px; }
+.tb:hover { background: #1c222c; color: var(--fg); }
+.tb[aria-pressed="true"], .tb[aria-expanded="true"] { background: var(--fg); color: var(--ink); }
+.tb:focus-visible { outline: 2px solid var(--accent); }
+.tb svg { width: 16px; height: 16px; }
+.sep { width: 1px; height: 20px; background: var(--line); }
+
+#layers { top: calc(var(--gap) + 48px + env(safe-area-inset-top, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); width: 240px; padding: 12px; display: grid; gap: 10px; z-index: 5; }
+.opt { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; cursor: pointer; }
+.opt small { display: block; color: var(--muted); font-size: 11px; }
+.sw { appearance: none; width: 30px; height: 18px; border-radius: 9px; background: #2a313d; position: relative; cursor: pointer; flex: none; margin: 0; }
+.sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: var(--fg-2); transition: transform .15s; }
+.sw:checked { background: var(--accent); }
+.sw:checked::after { transform: translateX(12px); background: var(--ink); }
+input[type=range] { accent-color: var(--accent); width: 100%; }
+
+#side { top: calc(var(--gap) + 48px + env(safe-area-inset-top, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); width: 350px;
+  max-height: calc(100% - 200px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow: auto; overscroll-behavior: contain; }
+.card { padding: 16px; display: grid; gap: 14px; }
+.card-head { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.x { all: unset; cursor: pointer; width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center; color: var(--muted); flex: none; }
+.x:hover { background: #1c222c; color: var(--fg); }
+.x:focus-visible { outline: 2px solid var(--accent); }
+.card .place { font: 400 23px/1.1 var(--f-display); color: var(--fg); margin: 3px 0 0; text-wrap: balance; }
+.readout { display: flex; align-items: flex-end; gap: 12px; }
+.readout b { font: 400 54px/.85 var(--f-display); }
+.readout span { font-size: 12.5px; color: var(--fg-2); padding-bottom: 3px; }
+.readout span em { display: block; font: normal 11px var(--f-mono); color: var(--muted); }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.trio div { background: #0c0f14; padding: 8px 10px; display: grid; gap: 2px; }
+.trio b { font: 500 17px/1 var(--f-mono); font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 6px; }
+.trio b i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); }
+.trio span { font-size: 11px; color: var(--muted); }
+.stack { display: flex; gap: 2px; height: 10px; border-radius: 3px; overflow: hidden; }
+.stack s { background: var(--c); text-decoration: none; min-width: 2px; }
+.stack-leg { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 7px; font-size: 12px; color: var(--fg-2); }
+.stack-leg span { display: inline-flex; align-items: center; gap: 5px; }
+.stack-leg i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); }
+.stack-leg b { font: 500 11.5px var(--f-mono); color: var(--fg); }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font: 9.5px var(--f-mono); fill: var(--muted); }
+.limits { display: grid; gap: 4px; }
+.lim { display: grid; grid-template-columns: 16px 1fr auto; gap: 8px; align-items: center; font-size: 12.5px; color: var(--fg-2); }
+.lim b { font: 500 11.5px var(--f-mono); color: var(--fg); }
+.lim .ok { color: var(--good); } .lim .no { color: var(--bad); }
+.area { padding: 10px 12px; border-radius: 8px; background: #0c0f14; border: 1px solid var(--line); font-size: 12.5px; color: var(--fg-2); display: grid; gap: 6px; }
+.area b { color: var(--fg); font-family: var(--f-mono); font-weight: 500; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.btn { all: unset; cursor: pointer; padding: 7px 11px; border-radius: 7px; border: 1px solid var(--line); font-size: 12.5px; color: var(--fg); background: #0d1117; display: inline-flex; gap: 6px; align-items: center; }
+.btn:hover { border-color: var(--line-2); }
+.btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.btn:focus-visible { outline: 2px solid var(--accent); }
+.empty { padding: 16px; display: grid; gap: 10px; }
+.empty p { margin: 0; color: var(--fg-2); font-size: 13px; }
+
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); margin: 0 -16px; padding: 0 12px; }
+.tabs button { all: unset; cursor: pointer; padding: 8px 8px 9px; font: 500 12.5px/1 var(--f-body); color: var(--muted); border-bottom: 2px solid transparent; }
+.tabs button[aria-selected="true"] { color: var(--fg); border-color: var(--accent); }
+.tabs button:focus-visible { outline: 2px solid var(--accent); }
+h2 { margin: 0; font: 400 22px/1.12 var(--f-display); text-wrap: balance; }
+.card p { margin: 0; color: var(--fg-2); font-size: 13px; }
+.card p.note { font-size: 11.5px; color: var(--muted); }
+.kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.kpis div { background: #0c0f14; padding: 10px; display: grid; gap: 3px; align-content: start; }
+.kpis b { font: 400 26px/1 var(--f-display); }
+.kpis b small { font: 12px var(--f-mono); color: var(--muted); margin-left: 1px; }
+.kpis span { font-size: 11px; color: var(--fg-2); line-height: 1.3; }
+.filters { display: flex; gap: 4px; flex-wrap: wrap; }
+.filters .btn { padding: 4px 9px; font-size: 12px; }
+.list { display: grid; }
+.list button { all: unset; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 1px 10px; padding: 7px 8px; margin: 0 -8px; border-radius: 6px; }
+.list button:hover { background: #1a202a; }
+.list button:focus-visible { outline: 2px solid var(--accent); }
+.list .n { font-size: 13px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.list .v { font: 500 12.5px var(--f-mono); grid-row: span 2; align-self: center; display: flex; gap: 6px; align-items: center; }
+.list .v i { width: 8px; height: 8px; border-radius: 2px; background: var(--c); }
+.list .m { font-size: 11px; color: var(--muted); }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+th { font: 500 10px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.num, th.num { text-align: right; font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+
+#clock { left: 50%; transform: translateX(-50%); bottom: calc(var(--gap) + env(safe-area-inset-bottom, 0px)); width: min(720px, calc(100% - 28px));
+  padding: 10px 14px; display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; box-sizing: border-box; }
+#clock .left { display: flex; gap: 12px; align-items: center; }
+#clock .time { font: 400 30px/1 var(--f-display); min-width: 3em; }
+#clock .time small { display: block; font: 10px var(--f-mono); color: var(--muted); letter-spacing: .08em; margin-top: 3px; text-transform: uppercase; }
+#play { all: unset; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--fg); color: var(--ink); flex: none; }
+#play:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#strip { position: relative; }
+#clock > div:last-child { min-width: 0; }
+#strip svg { display: block; width: 100%; height: 46px; overflow: visible; }
+#hour { position: absolute; inset: -6px 0 -14px; width: 100%; height: calc(100% + 20px); opacity: 0; cursor: ew-resize; margin: 0; }
+#stripCap { font: 10px var(--f-mono); color: var(--muted); display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+#stripCap span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#ticker { color: var(--fg-2); }
+
+#hoverchip { position: fixed; pointer-events: none; z-index: 8; padding: 4px 8px; border-radius: 6px; background: var(--panel-solid); border: 1px solid var(--line-2);
+  font: 500 12px var(--f-mono); display: flex; gap: 6px; align-items: center; white-space: nowrap; box-shadow: 0 4px 14px #0008; }
+#hoverchip i { width: 9px; height: 9px; border-radius: 2px; }
+.tip { position: fixed; pointer-events: none; z-index: 20; background: var(--panel-solid); border: 1px solid var(--line-2); border-radius: 6px;
+  padding: 6px 8px; font: 11.5px/1.4 var(--f-mono); color: var(--fg); white-space: nowrap; box-shadow: 0 6px 20px #0008; }
+#loading { position: fixed; inset: 0; display: grid; place-items: center; background: var(--ink); z-index: 50; transition: opacity .6s; text-align: center; }
+#loading b { display: block; font: 400 32px var(--f-display); }
+#loading span { font: 11px var(--f-mono); color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+#loading.done { opacity: 0; pointer-events: none; }
+#credit { position: fixed; left: max(var(--gap), env(safe-area-inset-left, 0px)); bottom: calc(6px + env(safe-area-inset-bottom, 0px)); font: 10px var(--f-mono); color: var(--muted); }
+#credit a { color: var(--fg-2); }
+
+@media (max-width: 1100px) { #credit { display: none; } }
+@media (max-width: 760px) {
+  :root { --gap: 10px; }
+  #bar { width: auto; right: max(var(--gap), env(safe-area-inset-right, 0px)); padding: 10px 12px; gap: 10px; }
+  #bar.collapsed > :not(.head) { display: none; }
+  #barToggle { display: inline-flex; }
+  h1 { font-size: 20px; }
+  #tools { top: calc(var(--gap) + 58px + env(safe-area-inset-top, 0px)); }
+  #bar:not(.collapsed) ~ #tools { display: none; }
+  #tools .lbl-txt { display: none; }
+  #layers { top: calc(var(--gap) + 104px + env(safe-area-inset-top, 0px)); }
+  #stripCap #clockNote { display: none; }
+  #side { top: auto; left: max(var(--gap), env(safe-area-inset-left, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); width: auto;
+    bottom: calc(var(--gap) + 92px + env(safe-area-inset-bottom, 0px)); max-height: 50%; }
+  #clock { width: auto; left: max(var(--gap), env(safe-area-inset-left, 0px)); right: max(var(--gap), env(safe-area-inset-right, 0px)); transform: none; gap: 10px; }
+  #clock .time { font-size: 24px; }
+  .readout b { font-size: 44px; }
+}
+@media (prefers-reduced-motion: reduce) { #loading, .sw::after { transition: none; } }
+</style>
+</head>
+<body>
+<div id="scene"></div>
+<div id="labels"></div>
+<div id="loading"><div><b>Listening to the valley…</b><span id="loadmsg">loading OpenStreetMap layers</span></div></div>
+
+<header id="bar" class="panel">
+  <div class="head" style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start">
+    <h1>Kathmandu–Lalitpur <em>Noise</em> Atlas</h1>
+    <button class="tb" id="barToggle" aria-expanded="true">Hide</button>
+  </div>
+  <div class="seg" id="metric" role="group" aria-label="Metric">
+    <button data-m="hour" aria-pressed="true">This hour</button>
+    <button data-m="lden" aria-pressed="false">Day–night</button>
+    <button data-m="lnight" aria-pressed="false">Night</button>
+  </div>
+  <div class="chips" id="sources" role="group" aria-label="Sources">
+    <button class="chip" data-s="0" aria-pressed="true" style="--c:var(--road)"><i></i>Roads</button>
+    <button class="chip" data-s="1" aria-pressed="true" style="--c:var(--air)"><i></i>Aircraft</button>
+    <button class="chip" data-s="2" aria-pressed="true" style="--c:var(--act)"><i></i>Markets</button>
+    <button class="chip" data-s="3" aria-pressed="true" style="--c:var(--night)"><i></i>Nightlife</button>
+  </div>
+  <div>
+    <div class="legend" id="legend"></div>
+    <div class="legend-ticks" id="legendTicks"></div>
+  </div>
+  <p class="hint" id="hint">Scroll to zoom where you point · drag to pan · right-drag to tilt · click any spot to analyse it</p>
+</header>
+
+<nav id="tools" class="panel" aria-label="Map tools">
+  <button class="tb" id="zIn" aria-label="Zoom in" title="Zoom in"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
+  <button class="tb" id="zOut" aria-label="Zoom out" title="Zoom out"><svg viewBox="0 0 16 16"><path d="M3 8h10" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></button>
+  <button class="tb" id="vTop" aria-pressed="false" title="Look straight down"><svg viewBox="0 0 16 16"><rect x="3" y="3" width="10" height="10" rx="1.5" stroke="currentColor" stroke-width="1.4" fill="none"/><path d="M3 8h10M8 3v10" stroke="currentColor" stroke-width="1" opacity=".6"/></svg><span class="lbl-txt">2D</span></button>
+  <button class="tb" id="vHome" aria-label="Reset view" title="Reset view"><svg viewBox="0 0 16 16"><path d="M2.5 7.5 8 3l5.5 4.5V13h-3.5V9.5h-4V13H2.5z" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linejoin="round"/></svg></button>
+  <span class="sep"></span>
+  <button class="tb" id="airportBtn" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 16 16"><path d="M8 1.5v5L14 10v1.3l-6-1.8v3l1.8 1.3V15L8 14.3 6.2 15v-1.2L8 12.5v-3l-6 1.8V10l6-3.5z" fill="currentColor"/></svg><span class="lbl-txt">Airport</span></button>
+  <button class="tb" id="layersBtn" aria-expanded="false" aria-controls="layers"><svg viewBox="0 0 16 16"><path d="m8 2 6 3-6 3-6-3zM2 8l6 3 6-3M2 11l6 3 6-3" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linejoin="round"/></svg><span class="lbl-txt">Layers</span></button>
+  <button class="tb" id="insightsBtn" aria-expanded="false" aria-controls="side"><svg viewBox="0 0 16 16"><path d="M3 13V8M7 13V4M11 13V6M14 13H2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg><span class="lbl-txt">Insights</span></button>
+</nav>
+
+<div id="layers" class="panel" hidden>
+  <label class="opt" for="oRelief"><span>Sound relief<small>Ground rises with loudness</small></span><input class="sw" type="checkbox" id="oRelief"></label>
+  <label class="opt" for="oBld"><span>Buildings</span><input class="sw" type="checkbox" id="oBld" checked></label>
+  <label class="opt" for="glow" style="display:grid;gap:4px"><span>Ground glow <span class="mono" id="glowV" style="color:var(--muted)">20%</span><small>How strongly the noise colours the ground between buildings</small></span><input type="range" id="glow" min="0" max="100" step="5" value="20"></label>
+  <label class="opt" for="oContours"><span>5 dB contours</span><input class="sw" type="checkbox" id="oContours" checked></label>
+  <label class="opt" for="oTraffic"><span>Moving traffic</span><input class="sw" type="checkbox" id="oTraffic" checked></label>
+  <label class="opt" for="oFlights"><span>Flights</span><input class="sw" type="checkbox" id="oFlights" checked></label>
+  <label class="opt" for="oProcs"><span>Published flight tracks<small>AIP procedures for the runway in use</small></span><input class="sw" type="checkbox" id="oProcs" checked></label>
+  <label class="opt" for="exag" style="display:grid;gap:4px"><span>Terrain height <span class="mono" id="exagV" style="color:var(--muted)">1.8×</span></span><input type="range" id="exag" min="1" max="4" step="0.1" value="1.8"></label>
+</div>
+
+<aside id="side" class="panel" aria-live="polite" hidden></aside>
+
+<section id="clock" class="panel" aria-label="Time of day">
+  <div class="left">
+    <button id="play" aria-label="Play the day"><svg width="12" height="14" viewBox="0 0 12 14" id="playIcon"><path d="M1 1l10 6-10 6z" fill="currentColor"/></svg></button>
+    <button class="tb" id="speed" title="Playback speed" style="font-family:var(--f-mono);min-width:44px">60×</button>
+    <div class="time" id="clockTime">10:00<small>Nepal time</small></div>
+  </div>
+  <div>
+    <div id="stripCap"><span id="ticker">City median · loudest 10% shaded</span><span id="clockNote"></span></div>
+    <div id="strip"><svg id="stripSvg" viewBox="0 0 700 46" preserveAspectRatio="none" aria-hidden="true"></svg><input type="range" id="hour" min="0" max="23.95" step="0.05" value="10" aria-label="Hour of day"></div>
+  </div>
+</section>
+
+<div id="hoverchip" hidden><i></i><span></span></div>
+<div class="tip" id="tip" hidden></div>
+<div id="credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · Terrain: Mapzen Terrarium / AWS Open Data</div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+import { createFlightSim } from './sim.js';
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const loadmsg = $('#loadmsg');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const get = async (p, kind) => { const r = await fetch(p); if (!r.ok) throw new Error(p + ' ' + r.status); return kind === 'json' ? r.json() : r.blob(); };
+async function unpack(blob, len) {
+  const bmp = await createImageBitmap(blob, { premultiplyAlpha: 'none', colorSpaceConversion: 'none' });
+  const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+  const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(bmp, 0, 0);
+  const px = x.getImageData(0, 0, c.width, c.height).data, out = new Uint8Array(len);
+  for (let i = 0, j = 0; j < len; i += 4) { out[j++] = px[i]; if (j < len) out[j++] = px[i + 1]; if (j < len) out[j++] = px[i + 2]; }
+  return out.buffer;
+}
+let meta, gridBuf, air20Buf, demBuf, bldBuf, roadBuf;
+try {
+  meta = await get('data/meta.json', 'json');
+  [gridBuf, air20Buf, demBuf, bldBuf, roadBuf] = await Promise.all(['grid', 'air20', 'dem', 'buildings', 'roads'].map(async n => unpack(await get(`data/${n}.png`), meta.packed[n])));
+} catch (e) {
+  loadmsg.textContent = 'Could not load the map data (' + e.message + '). Serve this folder over http, e.g. python3 -m http.server';
+  throw e;
+}
+loadmsg.textContent = 'building the valley';
+
+const G = meta.grid, D = meta.dem, P = meta.profiles;
+const GRID = new Uint8Array(gridBuf);
+const AIR20 = new Uint8Array(air20Buf);
+const DEM = new Uint16Array(demBuf);
+const W = G.nx * G.res, H = G.ny * G.res;
+
+const demH = (x, y) => {
+  let fx = (x - G.x0) / D.res, fy = (y - G.y0) / D.res;
+  fx = Math.min(Math.max(fx, 0), D.nx - 1.001); fy = Math.min(Math.max(fy, 0), D.ny - 1.001);
+  const i = fx | 0, j = fy | 0, tx = fx - i, ty = fy - j, k = j * D.nx + i;
+  return (DEM[k] * (1 - tx) + DEM[k + 1] * tx) * (1 - ty) + (DEM[k + D.nx] * (1 - tx) + DEM[k + D.nx + 1] * tx) * ty;
+};
+const cellOf = (x, y) => {
+  const i = Math.floor((x - G.x0) / G.res), j = Math.floor((y - G.y0) / G.res);
+  return (i < 0 || j < 0 || i >= G.nx || j >= G.ny) ? -1 : (j * G.nx + i) * 4;
+};
+
+const e10 = L => Math.pow(10, L / 10), d10 = e => 10 * Math.log10(Math.max(e, 1e-30));
+const lerpProf = (arr, h) => { const a = Math.floor(h) % 24, b = (a + 1) % 24, t = h - Math.floor(h); return arr[a] * (1 - t) + arr[b] * t; };
+const airOff = h => 10 * Math.log10(Math.max(lerpProf(P.air_mov, h), 0.05) / P.mov_ref);
+const hourOffsets = h => [lerpProf(P.road, h), airOff(h), lerpProf(P.act, h), lerpProf(P.night, h), lerpProf(P.bg, h)];
+function periodOffsets(kind) {
+  const acc = [0, 0, 0, 0, 0]; let n = 0;
+  for (let h = 0; h < 24; h++) {
+    const night = h >= 23 || h < 7, eve = h >= 19 && h < 23;
+    if (kind === 'lnight' && !night) continue;
+    const w = kind === 'lnight' ? 1 : night ? 10 : eve ? Math.pow(10, .5) : 1;
+    [P.road[h], airOff(h), P.act[h], P.night[h], P.bg[h]].forEach((v, i) => acc[i] += w * e10(v)); n++;
+  }
+  return acc.map(a => d10(a / n));
+}
+const PERIOD = { lden: periodOffsets('lden'), lnight: periodOffsets('lnight') };
+const HOURS = Array.from({ length: 24 }, (_, h) => hourOffsets(h));
+
+const state = { metric: 'hour', hour: 10, on: [1, 1, 1, 1], relief: 0, reliefTarget: 0, exag: 1.8, contours: 1,
+  bld: 1, traffic: 1, flights: 1, procs: 1, playing: false, speed: 60, spot: null, flight: null, follow: false, listen: false,
+  view: 'empty', tab: 'overview', area: 'All study area', hist: 'lden', rwy: '02', weather: 'clear' };
+const airW = (m = state.metric) => m === 'hour' ? (state.rwy === '02' ? [1, 0] : [0, 1]) : [meta.flight.rwy02_share, 1 - meta.flight.rwy02_share];
+
+const offsets = (m = state.metric) => m === 'hour' ? hourOffsets(state.hour) : PERIOD[m];
+function levelsWith(k, o, w = airW()) {
+  const raw = [0, 1, 2, 3].map(i => GRID[k + i] / 2 + o[i]);
+  raw[1] = d10(w[0] * e10(GRID[k + 1] / 2) + w[1] * e10(AIR20[k >> 2] / 2)) + o[1];
+  const parts = raw.map((r, i) => state.on[i] ? e10(r) : 0), bg = e10(o[4]);
+  return { total: d10(parts.reduce((a, b) => a + b, bg)), parts, bg, raw };
+}
+const levelsAt = (x, y, m) => { const k = cellOf(x, y); return k < 0 ? null : levelsWith(k, offsets(m), airW(m)); };
+
+const STOPS = [[30, '#0a121b'], [40, '#13253a'], [45, '#1d3657'], [50, '#363773'], [55, '#652f80'], [60, '#9f3168'], [65, '#cf4640'], [70, '#ec7826'], [75, '#f8b425'], [80, '#f8df5f'], [85, '#fff9de'], [90, '#ffffff']];
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+function rampRGB(L) {
+  if (L <= STOPS[0][0]) return hex(STOPS[0][1]);
+  for (let i = 1; i < STOPS.length; i++) if (L <= STOPS[i][0]) {
+    const [a, ca] = STOPS[i - 1], [b, cb] = STOPS[i], t = (L - a) / (b - a), A = hex(ca), B = hex(cb);
+    return A.map((v, k) => Math.round(v + (B[k] - v) * t));
+  }
+  return [255, 255, 255];
+}
+const band = L => Math.floor(L / 5) * 5 + 2.5;
+const rampCss = L => `rgb(${rampRGB(band(L)).join(',')})`;
+const rampData = new Uint8Array(256 * 4);
+for (let i = 0; i < 256; i++) rampData.set([...rampRGB(30 + i / 255 * 60), 255], i * 4);
+const rampTex = new THREE.DataTexture(rampData, 256, 1); rampTex.magFilter = rampTex.minFilter = THREE.LinearFilter; rampTex.needsUpdate = true;
+{
+  const bands = [45, 50, 55, 60, 65, 70, 75, 80, 85];
+  $('#legend').innerHTML = bands.map(b => `<span style="background:${rampCss(b - 2.5)}" title="${b - 5}–${b} dB"></span>`).join('');
+  $('#legendTicks').innerHTML = bands.map((b, i) => `<b style="font-weight:400">${i === 0 ? '<45' : b - 5}</b>`).join('');
+}
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0x07090d);
+$('#scene').appendChild(renderer.domElement);
+const labelRenderer = new CSS2DRenderer({ element: $('#labels') });
+labelRenderer.setSize(innerWidth, innerHeight);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x07090d, 26000, 52000);
+const camera = new THREE.PerspectiveCamera(38, innerWidth / innerHeight, 5, 90000);
+const HOME = { p: new THREE.Vector3(-3600, 9800, 13500), t: new THREE.Vector3(600, 300, -500) };
+camera.position.copy(HOME.p);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.copy(HOME.t);
+Object.assign(controls, {
+  enableDamping: true, dampingFactor: 0.09, screenSpacePanning: false, zoomToCursor: true, zoomSpeed: 0.7,
+  maxPolarAngle: 1.4, minDistance: 120, maxDistance: 20000, rotateSpeed: 0.6,
+});
+controls.mouseButtons = { LEFT: THREE.MOUSE.PAN, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.ROTATE };
+controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE };
+controls.update();
+
+scene.add(new THREE.AmbientLight(0xb8c4d8, 0.9));
+const sun = new THREE.DirectionalLight(0xfff1dc, 1.6); sun.position.set(-0.6, 1, 0.4); scene.add(sun);
+
+const gridTex = new THREE.DataTexture(GRID, G.nx, G.ny, THREE.RGBAFormat, THREE.UnsignedByteType);
+gridTex.magFilter = gridTex.minFilter = THREE.LinearFilter; gridTex.needsUpdate = true;
+const air20Tex = new THREE.DataTexture(AIR20, G.nx, G.ny, THREE.RedFormat, THREE.UnsignedByteType);
+air20Tex.unpackAlignment = 1; air20Tex.magFilter = air20Tex.minFilter = THREE.LinearFilter; air20Tex.needsUpdate = true;
+
+const U = {
+  uGrid: { value: gridTex }, uAir20: { value: air20Tex }, uAirW: { value: new THREE.Vector2(1, 0) }, uRamp: { value: rampTex },
+  uOff: { value: new THREE.Vector4() }, uBg: { value: 45 },
+  uExt: { value: new THREE.Vector4(G.x0, G.y0, W, H) },
+  uExag: { value: state.exag }, uRelief: { value: 0 }, uReliefScale: { value: 24 },
+  uContours: { value: 1 }, uGlow: { value: 0.2 }, uSpot: { value: new THREE.Vector3(0, 0, -1) },
+};
+const LEVEL_GLSL = /* glsl */`
+uniform sampler2D uGrid; uniform sampler2D uAir20; uniform vec2 uAirW; uniform sampler2D uRamp; uniform vec4 uOff; uniform float uBg; uniform vec4 uExt;
+uniform float uExag; uniform float uRelief; uniform float uReliefScale;
+float levelAt(vec2 en){
+  vec2 uv = (en - uExt.xy) / uExt.zw;
+  vec4 g = texture2D(uGrid, uv) * 127.5;
+  float a20 = texture2D(uAir20, uv).r * 127.5;
+  const float K = 0.33219281;
+  float air = uAirW.x * exp2((g.g+uOff.y)*K) + uAirW.y * exp2((a20+uOff.y)*K);
+  float e = exp2(uBg*K) + exp2((g.r+uOff.x)*K) + air + exp2((g.b+uOff.z)*K) + exp2((g.a+uOff.w)*K);
+  return log2(e) * 3.01029996;
+}
+vec3 ramp(float L){ return texture2D(uRamp, vec2(clamp((L-30.0)/60.0, 0.0, 1.0), 0.5)).rgb; }
+float surfaceY(float elev, float L){ return mix(elev*uExag, 0.0, uRelief) + uRelief*max(L-38.0, 0.0)*uReliefScale; }
+`;
+
+{
+  const nx = G.nx, ny = G.ny, n = nx * ny;
+  const pos = new Float32Array(n * 3), elev = new Float32Array(n), shade = new Float32Array(n);
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+    const k = j * nx + i, x = G.x0 + (i + 0.5) * G.res, y = G.y0 + (j + 0.5) * G.res;
+    pos[k * 3] = x; pos[k * 3 + 2] = -y; elev[k] = demH(x, y);
+  }
+  for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+    const k = j * nx + i;
+    const dzx = (elev[j * nx + Math.min(i + 1, nx - 1)] - elev[j * nx + Math.max(i - 1, 0)]) / (2 * G.res) * 2.2;
+    const dzy = (elev[Math.min(j + 1, ny - 1) * nx + i] - elev[Math.max(j - 1, 0) * nx + i]) / (2 * G.res) * 2.2;
+    const l = Math.hypot(dzx, dzy, 1);
+    shade[k] = Math.max(0, Math.min(1, 0.35 + 0.65 * ((-dzx * -0.55 - dzy * 0.62 + 0.56) / l)));
+  }
+  const idx = new Uint32Array((nx - 1) * (ny - 1) * 6); let p = 0;
+  for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
+    const a = j * nx + i, b = a + 1, c = a + nx, d = c + 1;
+    idx[p++] = a; idx[p++] = b; idx[p++] = c; idx[p++] = b; idx[p++] = d; idx[p++] = c;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('aElev', new THREE.BufferAttribute(elev, 1));
+  geo.setAttribute('aShade', new THREE.BufferAttribute(shade, 1));
+  geo.setIndex(new THREE.BufferAttribute(idx, 1));
+  const mat = new THREE.ShaderMaterial({
+    uniforms: U,
+    vertexShader: LEVEL_GLSL + `
+      attribute float aElev; attribute float aShade; varying vec2 vEN; varying float vShade; varying float vDist;
+      void main(){ vEN = vec2(position.x, -position.z); vShade = aShade;
+        float L = uRelief > 0.001 ? levelAt(vEN) : 0.0;
+        vec4 mv = modelViewMatrix * vec4(position.x, surfaceY(aElev, L), position.z, 1.0);
+        vDist = -mv.z; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: LEVEL_GLSL + `
+      uniform float uContours; uniform float uGlow; uniform vec3 uSpot;
+      varying vec2 vEN; varying float vShade; varying float vDist;
+      void main(){
+        float L = levelAt(vEN);
+        vec3 base = mix(vec3(0.024,0.03,0.042), vec3(0.075,0.085,0.105), vShade);
+        float g = mix(uGlow, 1.0, uRelief);
+        float a = smoothstep(37.0, 55.0, L) * g;
+        vec3 c = mix(base, ramp(floor(L/5.0)*5.0 + 2.5) * mix(0.5 + 0.3*vShade, 1.0, uRelief), a);
+        float f = L / 5.0; float w = fwidth(f);
+        float line = 1.0 - clamp(abs(fract(f + 0.5) - 0.5) / max(w, 1e-4) - 0.4, 0.0, 1.0);
+        c = mix(c, vec3(1.0, 0.96, 0.88), line * uContours * smoothstep(44.0, 50.0, L) * mix(0.12, 0.3, g));
+        if (uSpot.z > 0.0) {
+          float d = distance(vEN, uSpot.xy), fw = fwidth(d);
+          float ring = 1.0 - clamp(abs(d - uSpot.z) / max(fw * 1.5, 1.0), 0.0, 1.0);
+          c = mix(c, vec3(0.973, 0.706, 0.145), ring * 0.95);
+          c *= d < uSpot.z ? 1.0 : 0.88;
+        }
+        c = mix(c, vec3(0.027,0.035,0.05), smoothstep(26000.0, 52000.0, vDist));
+        gl_FragColor = vec4(c, 1.0);
+      }`,
+  });
+  const ground = new THREE.Mesh(geo, mat); ground.frustumCulled = false; scene.add(ground);
+}
+
+function lineMaterial(color, opacity, lift = 3) {
+  return new THREE.ShaderMaterial({
+    uniforms: { ...U, uColor: { value: new THREE.Color(color) }, uOpacity: { value: opacity }, uLift: { value: lift } },
+    vertexShader: LEVEL_GLSL + `attribute float aElev; uniform float uLift;
+      void main(){ vec2 en = vec2(position.x, -position.z); float L = uRelief > 0.001 ? levelAt(en) : 0.0;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.x, surfaceY(aElev, L) + uLift, position.z, 1.0); }`,
+    fragmentShader: `uniform vec3 uColor; uniform float uOpacity; void main(){ gl_FragColor = vec4(uColor, uOpacity); }`,
+    transparent: true, depthWrite: false,
+  });
+}
+function lineSegs(polys, mat) {
+  let n = 0; polys.forEach(p => n += Math.max(p.length - 1, 0));
+  const pos = new Float32Array(n * 6), el = new Float32Array(n * 2); let k = 0;
+  for (const p of polys) for (let i = 0; i < p.length - 1; i++) {
+    for (const q of [p[i], p[i + 1]]) { pos[k * 3] = q[0]; pos[k * 3 + 2] = -q[1]; el[k] = demH(q[0], q[1]); k++; }
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('aElev', new THREE.BufferAttribute(el, 1));
+  const m = new THREE.LineSegments(g, mat); m.frustumCulled = false; scene.add(m); return m;
+}
+
+const ROADS = [[], [], [], [], [], [], []];
+{
+  const dv = new DataView(roadBuf); let o = 0;
+  while (o < roadBuf.byteLength) {
+    const cls = dv.getUint8(o), n = dv.getUint16(o + 2, true); o += 4;
+    const pts = new Array(n);
+    for (let i = 0; i < n; i++) { pts[i] = [dv.getInt16(o, true), dv.getInt16(o + 2, true)]; o += 4; }
+    ROADS[cls].push(pts);
+  }
+}
+lineSegs([...ROADS[0], ...ROADS[1]], lineMaterial('#fff4dc', 0.5, 5));
+lineSegs([...ROADS[2], ...ROADS[3]], lineMaterial('#e8e2d2', 0.3, 4));
+lineSegs([...ROADS[4], ...ROADS[5], ...ROADS[6]], lineMaterial('#c9cdd6', 0.1, 3));
+lineSegs(meta.vec.rivers, lineMaterial('#5fb4d9', 0.7, 2));
+lineSegs(meta.vec.muni.map(m => [...m.p, m.p[0]]), lineMaterial('#f8b425', 0.4, 8));
+
+const BLD = (() => {
+  const n = bldBuf.byteLength / 8, i16 = new Int16Array(bldBuf), u8 = new Uint8Array(bldBuf);
+  const iPos = new Float32Array(n * 3), iSize = new Float32Array(n * 3), x = new Float32Array(n), y = new Float32Array(n), cell = new Int32Array(n);
+  for (let k = 0; k < n; k++) {
+    x[k] = i16[k * 4] / 2; y[k] = i16[k * 4 + 1] / 2; cell[k] = cellOf(x[k], y[k]);
+    iPos[k * 3] = x[k]; iPos[k * 3 + 1] = demH(x[k], y[k]); iPos[k * 3 + 2] = -y[k];
+    iSize[k * 3] = u8[k * 8 + 4] / 4; iSize[k * 3 + 1] = u8[k * 8 + 6] * 3.1; iSize[k * 3 + 2] = u8[k * 8 + 5] / 4;
+  }
+  const box = new THREE.BoxGeometry(1, 1, 1); box.translate(0, 0.5, 0);
+  const g = new THREE.InstancedBufferGeometry();
+  g.index = box.index; g.setAttribute('position', box.getAttribute('position')); g.setAttribute('normal', box.getAttribute('normal'));
+  g.setAttribute('iPos', new THREE.InstancedBufferAttribute(iPos, 3));
+  g.setAttribute('iSize', new THREE.InstancedBufferAttribute(iSize, 3));
+  g.instanceCount = n;
+  const m = new THREE.ShaderMaterial({
+    uniforms: U,
+    vertexShader: LEVEL_GLSL + `attribute vec3 iPos; attribute vec3 iSize; uniform vec3 uSpot; varying vec3 vC; varying float vDist;
+      void main(){
+        vec2 en = vec2(iPos.x, -iPos.z);
+        float L = levelAt(en);
+        vec3 p = vec3(iPos.x + position.x*iSize.x, iPos.y*uExag + position.y*iSize.y, iPos.z + position.z*iSize.z);
+        float shade = 0.42 + 0.58*max(dot(normal, normalize(vec3(-0.5, 0.9, 0.35))), 0.0) + (normal.y > 0.5 ? 0.12 : 0.0);
+        vec3 col = mix(vec3(0.20, 0.22, 0.27), ramp(L), 0.25 + 0.75*smoothstep(42.0, 60.0, L));
+        float dim = (uSpot.z > 0.0 && distance(en, uSpot.xy) > uSpot.z) ? 0.8 : 1.0;
+        vC = col * shade * (0.75 + 0.25*position.y) * dim;
+        vec4 mv = modelViewMatrix * vec4(p, 1.0); vDist = -mv.z; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `varying vec3 vC; varying float vDist;
+      void main(){ gl_FragColor = vec4(mix(vC, vec3(0.027,0.035,0.05), smoothstep(24000.0, 50000.0, vDist)), 1.0); }`,
+  });
+  const mesh = new THREE.Mesh(g, m); mesh.frustumCulled = false; scene.add(mesh);
+  return { mesh, x, y, cell, n };
+})();
+
+const RW = meta.runway, RA = RW.a, RB = RW.b, RU = [(RB[0] - RA[0]) / RW.len, (RB[1] - RA[1]) / RW.len];
+const apElev = demH((RA[0] + RB[0]) / 2, (RA[1] + RB[1]) / 2);
+const runway = new THREE.Mesh(new THREE.PlaneGeometry(46, RW.len).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ color: 0x3a3f4a }));
+runway.position.set((RA[0] + RB[0]) / 2, 0, -(RA[1] + RB[1]) / 2);
+runway.rotation.y = -Math.atan2(RU[0], RU[1]);
+scene.add(runway);
+lineSegs(meta.vec.aerodrome, lineMaterial('#d95926', 0.55, 6));
+
+const labels = [];
+function addLabel(text, x, y, cls, maxDist, lift = 40, minDist = 0) {
+  const el = document.createElement('div'); el.className = 'lbl ' + cls; el.textContent = text;
+  const o = new CSS2DObject(el); o.position.set(x, 0, -y); o.userData = { x, y, lift, minDist, maxDist }; scene.add(o); labels.push(o);
+}
+const MAJOR = /^(Thamel|Patan|Baneshwor|New Baneshwor|Koteshwor|Kalanki|Boudha|Chabahil|Balaju|Jawalakhel|Lagankhel|Satdobato|Kirtipur|Swayambhu|Maharajgunj|Kalimati|Imadol|Sinamangal|Lazimpat|Kupondole|Pulchowk|Tinkune|Gongabu|Sanepa|Jorpati|Gaushala|Thapathali|Ekantakuna|Chobhar|Budhanilkantha)$/i;
+const seenNames = new Set();
+for (const p of meta.places) {
+  if (p.k !== 'place' || seenNames.has(p.n)) continue;
+  seenNames.add(p.n);
+  addLabel(p.n, p.x, p.y, '', MAJOR.test(p.n) ? 30000 : 3200);
+}
+addLabel('Tribhuvan International Airport', (RA[0] + RB[0]) / 2 + 700, (RA[1] + RB[1]) / 2, 'big', 40000, 120);
+
+const traffic = (() => {
+  const ways = [];
+  const add = (cls, wgt) => ROADS[cls].forEach(p => {
+    if (p.length < 2) return;
+    const cum = [0]; for (let i = 1; i < p.length; i++) cum.push(cum[i - 1] + Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]));
+    if (cum[cum.length - 1] < 40) return;
+    ways.push({ p, cum, el: p.map(q => demH(q[0], q[1])), len: cum[cum.length - 1], wgt });
+  });
+  add(0, 3.2); add(1, 2.6); add(2, 1.5); add(3, 0.7);
+  const total = ways.reduce((a, w) => a + w.len * w.wgt, 0);
+  const N = 9000, pos = new Float32Array(N * 3), seed = new Float32Array(N), Q = [];
+  for (let k = 0; k < N; k++) {
+    let r = Math.random() * total, w = ways[0];
+    for (const c of ways) { r -= c.len * c.wgt; if (r <= 0) { w = c; break; } }
+    Q.push({ w, s: Math.random() * w.len, v: (6 + Math.random() * 9) * (Math.random() < .5 ? 1 : -1), seg: 0 });
+    seed[k] = Math.random();
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+  const m = new THREE.ShaderMaterial({
+    uniforms: { uActive: { value: 1 }, uScale: { value: renderer.getPixelRatio() } },
+    vertexShader: `attribute float aSeed; uniform float uActive; uniform float uScale; varying float vA; varying float vS;
+      void main(){ vec4 mv = modelViewMatrix * vec4(position, 1.0); vA = step(aSeed, uActive); vS = aSeed;
+      gl_PointSize = clamp(5200.0 / -mv.z, 1.4, 5.0) * uScale * vA; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `varying float vA; varying float vS; void main(){ if (vA < 0.5) discard; vec2 d = gl_PointCoord - 0.5; float r = dot(d, d);
+      if (r > 0.25) discard; vec3 c = vS > 0.5 ? vec3(1.0, 0.92, 0.78) : vec3(1.0, 0.35, 0.25); gl_FragColor = vec4(c, (1.0 - r*4.0) * 0.95); }`,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  });
+  const pts = new THREE.Points(g, m); pts.frustumCulled = false; scene.add(pts);
+  function update(dt) {
+    for (let k = 0; k < N; k++) {
+      const q = Q[k], w = q.w; q.s += q.v * dt * 9;
+      if (q.s > w.len) q.s -= w.len; else if (q.s < 0) q.s += w.len;
+      let i = q.seg; while (i < w.cum.length - 2 && w.cum[i + 1] < q.s) i++; while (i > 0 && w.cum[i] > q.s) i--; q.seg = i;
+      const t = (q.s - w.cum[i]) / Math.max(w.cum[i + 1] - w.cum[i], 1e-3), a = w.p[i], b = w.p[i + 1];
+      pos[k * 3] = a[0] + (b[0] - a[0]) * t; pos[k * 3 + 2] = -(a[1] + (b[1] - a[1]) * t);
+      pos[k * 3 + 1] = (w.el[i] + (w.el[i + 1] - w.el[i]) * t) * state.exag + 9;
+    }
+    g.attributes.position.needsUpdate = true;
+  }
+  return { pts, m, update };
+})();
+
+const glowTex = (() => {
+  const c = document.createElement('canvas'); c.width = c.height = 64; const x = c.getContext('2d');
+  const gr = x.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,255,255,1)'); gr.addColorStop(.25, 'rgba(255,230,200,.6)'); gr.addColorStop(1, 'rgba(255,180,120,0)');
+  x.fillStyle = gr; x.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c);
+})();
+const onRunway = (x, y) => { const dx = x - RA[0], dy = y - RA[1], a = dx * RU[0] + dy * RU[1], c = Math.abs(-dx * RU[1] + dy * RU[0]); return a > -60 && a < RW.len + 60 && c < 40; };
+const groundY = (x, y) => onRunway(x, y) ? Math.max(demH(x, y) * state.exag, apElev * state.exag + 2) : demH(x, y) * state.exag;
+const sim = createFlightSim({ scene, camera, meta, demH, demMin: D.min, state, glowTex, groundY });
+
+function syncUniforms() {
+  const o = offsets();
+  U.uOff.value.set(...[0, 1, 2, 3].map(i => state.on[i] ? o[i] : -300));
+  U.uBg.value = o[4];
+  U.uContours.value = state.contours; U.uExag.value = state.exag; U.uAirW.value.set(...airW());
+  const busy = state.metric === 'hour' ? Math.pow(10, (lerpProf(P.road, state.hour) - 1.7) / 10) : 0.7;
+  traffic.m.uniforms.uActive.value = state.on[0] ? Math.min(busy, 1) : 0;
+}
+
+const SRC = [['Roads', 'var(--road)'], ['Aircraft', 'var(--air)'], ['Markets', 'var(--act)'], ['Nightlife', 'var(--night)'], ['Background', 'var(--bg-src)']];
+const DESC = [[45, 'Quiet, like a residential night'], [50, 'Quiet backstreet'], [55, 'Inner lane, distant traffic'], [60, 'Busy neighbourhood street'],
+  [65, 'Above the level linked to sleep and heart risk'], [70, 'Arterial road, raised voices to talk'], [75, 'Heavy traffic, constant horns'],
+  [80, 'Ring Road junction at peak'], [200, 'Long exposure risks hearing damage']];
+const describe = L => DESC.find(d => L < d[0])[1];
+const fmtHour = h => `${String(Math.floor(h)).padStart(2, '0')}:${String(Math.floor((h % 1) * 60)).padStart(2, '0')}`;
+const fmt = n => n.toLocaleString('en-US'), pct = n => n.toFixed(n < 10 || (n > 99 && n < 100) ? 1 : 0);
+const metricLabel = () => state.metric === 'hour' ? `LAeq at ${fmtHour(state.hour)}` : state.metric === 'lden' ? 'Lden, 24 h weighted' : 'Lnight, 23:00–07:00';
+
+function nearestPlace(x, y) {
+  let best = null, bd = 1e12;
+  for (const p of meta.places) if (p.k === 'place') { const d = (p.x - x) ** 2 + (p.y - y) ** 2; if (d < bd) { bd = d; best = p; } }
+  return best && bd < 1500 ** 2 ? best.n : 'Kathmandu Valley';
+}
+
+const SPOT_R = 300;
+function spotAnalysis(x, y) {
+  const k = cellOf(x, y); if (k < 0) return null;
+  const yr = airW('lden'), now = levelsWith(k, offsets()), lden = levelsWith(k, PERIOD.lden, yr), lnight = levelsWith(k, PERIOD.lnight, yr);
+  const hw = airW('hour'), hourly = HOURS.map(o => levelsWith(k, o, hw).total);
+  const od = PERIOD.lden, r2 = SPOT_R * SPOT_R, lv = [];
+  for (let i = 0; i < BLD.n; i++) {
+    const dx = BLD.x[i] - x; if (dx > SPOT_R || dx < -SPOT_R) continue;
+    const dy = BLD.y[i] - y; if (dx * dx + dy * dy > r2 || BLD.cell[i] < 0) continue;
+    lv.push(levelsWith(BLD.cell[i], od, yr).total);
+  }
+  lv.sort((a, b) => a - b);
+  const area = { n: lv.length, median: lv.length ? lv[lv.length >> 1] : 0, over65: lv.filter(v => v >= 65).length, over55: lv.filter(v => v >= 55).length };
+  return { x, y, now, lden, lnight, hourly, area, name: nearestPlace(x, y) };
+}
+
+function hourChart(hourly) {
+  const Wd = 320, Ht = 110, lo = Math.floor((Math.min(...hourly) - 3) / 5) * 5, hi = Math.ceil((Math.max(...hourly, 56) + 3) / 5) * 5;
+  const x = h => 22 + h / 23 * (Wd - 26), y = v => 6 + (hi - v) / (hi - lo) * (Ht - 22);
+  let s = `<svg viewBox="0 0 ${Wd} ${Ht}" role="img" aria-label="Level at this spot through the day">`;
+  for (let v = lo; v <= hi; v += 10) s += `<line x1="22" x2="${Wd}" y1="${y(v)}" y2="${y(v)}" stroke="#262d39"/><text x="0" y="${y(v) + 3}">${v}</text>`;
+  const limit = h => (h >= 6 && h < 21) ? 55 : 45;
+  let lp = ''; for (let h = 0; h < 24; h++) lp += `${h ? 'L' : 'M'}${x(Math.max(h - .5, 0))},${y(limit(h))}H${x(Math.min(h + .5, 23))}`;
+  s += `<path d="${lp}" fill="none" stroke="#e5534b" stroke-width="1.2" stroke-dasharray="3 3" opacity=".85"/>`;
+  const pts = hourly.map((v, h) => `${x(h)},${y(v)}`).join(' ');
+  s += `<polygon points="${x(0)},${Ht - 16} ${pts} ${x(23)},${Ht - 16}" fill="var(--accent)" opacity=".12"/>`;
+  s += `<polyline points="${pts}" fill="none" stroke="var(--fg)" stroke-width="2" stroke-linejoin="round"/>`;
+  if (state.metric === 'hour') { const cx = x(state.hour), cv = hourly[Math.round(state.hour) % 24];
+    s += `<line x1="${cx}" x2="${cx}" y1="4" y2="${Ht - 16}" stroke="var(--accent)" stroke-width="1.5"/><circle cx="${cx}" cy="${y(cv)}" r="4" fill="var(--accent)" stroke="#12161d" stroke-width="2"/>`; }
+  for (const h of [0, 6, 12, 18, 23]) s += `<text x="${x(h)}" y="${Ht - 2}" text-anchor="middle">${String(h).padStart(2, '0')}</text>`;
+  s += `<rect x="22" y="0" width="${Wd - 22}" height="${Ht - 14}" fill="transparent" class="hit"/>`;
+  return s + '</svg>';
+}
+
+function renderSpot() {
+  const a = state.spot, side = $('#side');
+  if (!a) return;
+  const L = a.now.total, tot = a.now.parts.reduce((s, v) => s + v, a.now.bg);
+  const shares = [...a.now.parts, a.now.bg].map(v => v / tot * 100);
+  const lim = [
+    ['WHO road traffic, Lden 53', a.lden.raw[0], 53, state.on[0]],
+    ['WHO aircraft, Lden 45', a.lden.raw[1], 45, state.on[1]],
+    ['WHO road at night, Lnight 45', a.lnight.raw[0], 45, state.on[0]],
+    ['Nepal residential, day 55', a.hourly.slice(6, 21).reduce((m, v) => Math.max(m, v), 0), 55, 1],
+    ['Nepal residential, night 45', [...a.hourly.slice(21), ...a.hourly.slice(0, 6)].reduce((m, v) => Math.max(m, v), 0), 45, 1],
+  ].filter(l => l[3]);
+  side.innerHTML = `<div class="card">
+    <div class="card-head"><div><p class="eyebrow">${(meta.origin.lat + a.y / meta.origin.ky).toFixed(4)}°N ${(meta.origin.lon + a.x / meta.origin.kx).toFixed(4)}°E</p>
+      <p class="place">Near ${a.name}</p></div><button class="x" id="spotClose" aria-label="Close analysis">✕</button></div>
+    <div class="readout"><b>${L.toFixed(0)}</b><i style="width:10px;height:38px;border-radius:3px;background:${rampCss(L)};flex:none;margin-bottom:2px"></i><span>dB(A) · ${describe(L)}<em>${metricLabel()}</em></span></div>
+    <div class="trio">
+      <div><b><i style="--c:${rampCss(Math.max(...a.hourly))}"></i>${Math.max(...a.hourly).toFixed(0)}</b><span>Loudest hour</span></div>
+      <div><b><i style="--c:${rampCss(a.lden.total)}"></i>${a.lden.total.toFixed(0)}</b><span>Lden</span></div>
+      <div><b><i style="--c:${rampCss(a.lnight.total)}"></i>${a.lnight.total.toFixed(0)}</b><span>Lnight</span></div>
+    </div>
+    <div><p class="eyebrow" style="margin-bottom:7px">Where the sound comes from</p>
+      <div class="stack">${shares.map((v, i) => v > .5 ? `<s style="--c:${SRC[i][1]};flex:${v}"></s>` : '').join('')}</div>
+      <div class="stack-leg">${shares.map((v, i) => v >= 1 ? `<span style="--c:${SRC[i][1]}"><i></i>${SRC[i][0]} <b>${v.toFixed(0)}%</b></span>` : '').join('')}</div></div>
+    <div><p class="eyebrow" style="margin-bottom:6px">Through the day · dB(A)</p><div class="chart" id="spotChart">${hourChart(a.hourly)}</div>
+      <p class="note" style="margin-top:4px"><span style="color:var(--bad)">- - -</span> Nepal residential limit, 55 by day and 45 at night</p></div>
+    <div><p class="eyebrow" style="margin-bottom:6px">Against the limits</p><div class="limits">${lim.map(([n, v, t]) =>
+      `<div class="lim"><span class="${v > t ? 'no' : 'ok'}">${v > t ? '▲' : '✓'}</span><span>${n}</span><b>${v.toFixed(0)} dB</b></div>`).join('')}</div></div>
+    <div class="area"><span><b>${fmt(a.area.n)}</b> buildings within ${SPOT_R} m</span>
+      ${a.area.n ? `<span><b>${pct(a.area.over65 / a.area.n * 100)}%</b> above Lden 65 · <b>${pct(a.area.over55 / a.area.n * 100)}%</b> above 55 · median <b>${a.area.median.toFixed(0)} dB</b></span>` : ''}</div>
+    <div class="actions"><button class="btn" id="spotZoom">Zoom here</button><button class="btn" id="spotListen" aria-pressed="${!!state.listen}">${state.listen ? 'Stop sound' : 'Listen to this spot'}</button></div>
+  </div>`;
+  $('#spotClose').onclick = clearSpot;
+  $('#spotZoom').onclick = () => flyTo(a.x, a.y, 900);
+  $('#spotListen').onclick = () => { state.listen = !state.listen; audio.toggle(state.listen); renderSpot(); audio.update(a.now); };
+  const ch = $('#spotChart');
+  ch.onpointermove = e => { const r = ch.getBoundingClientRect(), h = Math.round(Math.min(Math.max((e.clientX - r.left) / r.width * 320 - 22, 0) / 294 * 23, 23));
+    showTip(e, `${String(h).padStart(2, '0')}:00 · ${a.hourly[h].toFixed(1)} dB · limit ${h >= 6 && h < 21 ? 55 : 45}`); };
+  ch.onpointerleave = hideTip;
+  audio.update(a.now);
+}
+
+function selectSpot(x, y, open = true) {
+  const a = spotAnalysis(x, y); if (!a) return;
+  state.spot = a; U.uSpot.value.set(x, y, SPOT_R);
+  pin.visible = true; placePinMesh();
+  if (open) showSide('spot'); else if (state.view === 'spot') renderSpot();
+}
+function clearSpot() {
+  state.spot = null; U.uSpot.value.set(0, 0, -1); pin.visible = false;
+  if (state.listen) { state.listen = false; audio.toggle(false); }
+  showSide(null);
+}
+function showSide(view) {
+  state.view = view;
+  const side = $('#side');
+  side.hidden = !view;
+  $('#insightsBtn').setAttribute('aria-expanded', view === 'insights' && state.tab !== 'airport');
+  $('#airportBtn').setAttribute('aria-expanded', view === 'insights' && state.tab === 'airport');
+  if (view === 'spot') renderSpot();
+  if (view === 'insights') renderInsights();
+  if (view === 'flight') renderFlight();
+  if (view !== 'flight') { state.flight = null; state.follow = false; }
+  if (view && innerWidth <= 760) setBar(false);
+}
+
+const S = meta.stats, BANDL = ['<45', '45–50', '50–55', '55–60', '60–65', '65–70', '70–75', '75+'], BANDMID = [42.5, 47.5, 52.5, 57.5, 62.5, 67.5, 72.5, 77.5];
+function hist(st) {
+  const data = st[state.hist === 'lden' ? 'lden_hist' : 'lnight_hist'], tot = data.reduce((a, b) => a + b, 0), max = Math.max(...data);
+  const Wd = 320, Ht = 120, bw = Wd / data.length;
+  let s = `<svg viewBox="0 -10 ${Wd} ${Ht + 26}" role="img" aria-label="Share of buildings per band">`;
+  data.forEach((v, i) => {
+    const h = Math.max(v / max * (Ht - 14), 1), x = i * bw + 1, r = Math.min(4, h);
+    s += `<path d="M${x},${Ht} v${-(h - r)} q0,${-r} ${r},${-r} h${bw - 2 - 2 * r} q${r},0 ${r},${r} v${h - r} z" fill="${rampCss(BANDMID[i])}" data-i="${i}"/>`;
+    s += `<rect x="${i * bw}" y="-10" width="${bw}" height="${Ht + 10}" fill="transparent" data-i="${i}"/>`;
+    if (v / tot > .04) s += `<text x="${x + (bw - 2) / 2}" y="${Ht - h - 4}" text-anchor="middle" style="fill:var(--fg-2)">${pct(v / tot * 100)}%</text>`;
+    s += `<text x="${x + (bw - 2) / 2}" y="${Ht + 13}" text-anchor="middle">${BANDL[i]}</text>`;
+  });
+  return s + `<line x1="0" x2="${Wd}" y1="${Ht}" y2="${Ht}" stroke="#3a4352"/></svg>`;
+}
+const row = (x, y, n, v, m) => `<button data-x="${x}" data-y="${y}"><span class="n">${n}</span><span class="v" style="--c:${rampCss(v)}"><i></i>${v.toFixed(0)}</span><span class="m">${m}</span></button>`;
+function renderInsights() {
+  const side = $('#side'), t = state.tab;
+  let h = `<div class="card"><div class="card-head"><p class="eyebrow">Valley-wide findings</p><button class="x" id="insClose" aria-label="Close insights">✕</button></div>
+    <div class="tabs" role="tablist">${[['overview', 'Overview'], ['hotspots', 'Hotspots'], ['airport', 'Airport'], ['about', 'About']].map(([k, n]) =>
+      `<button role="tab" data-t="${k}" aria-selected="${k === t}">${n}</button>`).join('')}</div>`;
+  if (t === 'overview') {
+    const st = S[state.area];
+    h += `<h2>${pct(st.pct_lden_65)}% of buildings live above 65 dB Lden, the level tied to heart disease</h2>
+    <div class="filters">${['All study area', 'Kathmandu', 'Lalitpur'].map(k => `<button class="btn" data-area="${k}" aria-pressed="${k === state.area}">${k === 'All study area' ? 'Whole valley' : k}</button>`).join('')}</div>
+    <div class="kpis">
+      <div><b>${pct(st.pct_lden_55)}<small>%</small></b><span>above Lden 55</span></div>
+      <div><b>${pct(st.pct_lnight_50)}<small>%</small></b><span>above Lnight 50, sleep disturbed</span></div>
+      <div><b>${st.median_lden.toFixed(0)}<small>dB</small></b><span>median building</span></div>
+    </div>
+    <div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><p class="eyebrow">Buildings per band</p>
+      <div class="filters"><button class="btn" data-hist="lden" aria-pressed="${state.hist === 'lden'}">Lden</button><button class="btn" data-hist="lnight" aria-pressed="${state.hist === 'lnight'}">Lnight</button></div></div>
+      <div class="chart" id="hist">${hist(st)}</div></div>
+    <p class="note">Modelled at each of ${fmt(st.buildings)} OSM buildings. Road traffic is the main source almost everywhere; aircraft lead only around the airport.</p>`;
+  } else if (t === 'hotspots') {
+    const sens = meta.receptors.slice(0, 6);
+    h += `<h2>Loudest roads</h2>
+    <div class="list">${meta.corridors.slice(0, 7).map(c => row(c.x, c.y, c.n, c.lday, `${(c.len / 1000).toFixed(1)} km · daytime at the kerb`)).join('')}</div>
+    <h2>Schools and hospitals on loud roads</h2>
+    <p>${fmt(meta.receptor_counts.school_over_65)} schools and ${fmt(meta.receptor_counts.hospital_over_65)} hospitals sit above 65 dB by day. Nepal's quiet-zone limit is 50.</p>
+    <div class="list">${sens.map(r => row(r.x, r.y, r.n, r.lday, `${r.k === 'school' ? 'School' : 'Hospital'} · night ${r.lnight.toFixed(0)} dB`)).join('')}</div>`;
+  } else if (t === 'airport') {
+    const A = meta.airport, simT = state.hour * 3600, c = sim.counts(simT), ga = Math.round(meta.flight.go_around[state.weather] * 1000) / 10;
+    const past = sim.events.filter(e => e.t <= simT).slice(-7).reverse(), next = sim.events.filter(e => e.t > simT).slice(0, 3);
+    const evRow = e => `<button data-ev="${sim.events.indexOf(e)}"><span class="n">${e.text}</span><span class="v mono" style="--c:${e.kind === 'ga' ? 'var(--bad)' : e.kind === 'dep' ? 'var(--road)' : e.kind === 'land' ? 'var(--air)' : 'var(--act)'}"><i></i>${clockOf(e.t)}</span><span class="m">${e.f.label}</span></button>`;
+    h += `<h2>Runway ${state.rwy} in use · ${c.land} landings and ${c.dep} take-offs by ${fmtHour(state.hour)}</h2>
+    <div style="display:grid;gap:8px">
+      <div class="filters" role="group" aria-label="Runway in use"><span class="eyebrow" style="align-self:center;min-width:64px">Runway</span>${['02', '20'].map(r => `<button class="btn" data-rwy="${r}" aria-pressed="${state.rwy === r}">RWY ${r}</button>`).join('')}</div>
+      <div class="filters" role="group" aria-label="Weather"><span class="eyebrow" style="align-self:center;min-width:64px">Weather</span>${[['clear', 'Clear'], ['haze', 'Haze, low cloud'], ['storm', 'Storms']].map(([k, n]) => `<button class="btn" data-wx="${k}" aria-pressed="${state.weather === k}">${n}</button>`).join('')}</div>
+    </div>
+    <div class="kpis">
+      <div><b>${c.ga}</b><span>go-arounds today · ${ga}% of approaches</span></div>
+      <div><b>${c.heli}</b><span>helicopter moves on heli-lanes</span></div>
+      <div><b>${Math.round(A.movements_day)}</b><span>movements a day, CAAN 2024–25</span></div>
+    </div>
+    <div><p class="eyebrow" style="margin-bottom:4px">Just happened</p><div class="list">${past.map(evRow).join('') || '<p class="note">No movements yet today.</p>'}</div></div>
+    <div><p class="eyebrow" style="margin-bottom:4px">Coming up</p><div class="list">${next.map(evRow).join('')}</div></div>
+    <p class="note">Tracks: <span style="color:var(--air)">approach</span>, <span style="color:var(--road)">departure</span>, <span style="color:var(--bad)">missed approach</span>, <span style="color:var(--good)">heli-lane</span>; dashed lines are domestic VFR. Jets fly the RNP AR and VOR/DME procedures of AIP Nepal VNKT AD 2; a go-around follows the published right-turn missed approach to DARKE and the DANFE hold, then re-joins via DANFE. Domestic VFR traffic uses the valley passes of AD 2.23. Click a movement to watch it.</p>
+    <table><thead><tr><th>Aircraft Lden, typical year</th><th class="num">km²</th><th class="num">Buildings</th></tr></thead><tbody>
+    ${A.bands.filter(b => b.lden >= 50).map(b => `<tr><td>≥ ${b.lden} dB</td><td class="num">${b.km2}</td><td class="num">${fmt(b.buildings)}</td></tr>`).join('')}
+    </tbody></table>
+    <p class="note">The schedule is simulated: hourly totals follow CAAN figures, while the split between procedures, the ${Math.round(meta.flight.rwy02_share * 100)}/${100 - Math.round(meta.flight.rwy02_share * 100)} runway split and go-around rates are assumptions. The Bharatpur and Kakani pass positions are approximate; the AIP names them without coordinates.</p>`;
+  } else {
+    h += `<h2>How the map is made</h2>
+    <p>A screening model built from OpenStreetMap: ${fmt(meta.counts.roads)} roads as line sources by class, runway 02/20 flight tracks with a CAAN-based fleet mix, shops, bus parks and junctions, and bars and clubs as a night layer. Sound spreads over a 20 m grid with building screening, then hourly profiles give any hour, Lden and Lnight.</p>
+    <table><thead><tr><th>Survey site</th><th class="num">Measured</th><th class="num">Model</th></tr></thead><tbody>
+    ${meta.refs.map(r => `<tr><td><a href="${r.src}" target="_blank" rel="noopener">${r.n.split(' (')[0]}</a></td><td class="num">${r.measured}${r.measured === 70 ? '+' : ''}</td><td class="num">${r.modelled}</td></tr>`).join('')}
+    </tbody></table>
+    <p class="note">Read levels as ±5 dB. New Road's crowd noise is missing from OSM, so it reads low. Nepal limits are the 2012 standard as cited in Nepali studies; WHO values are the 2018 guidelines. Data © OpenStreetMap contributors, terrain from Mapzen Terrarium.</p>`;
+  }
+  side.innerHTML = h + '</div>';
+  $('#insClose').onclick = () => showSide(null);
+  side.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { state.tab = b.dataset.t; renderInsights(); side.scrollTop = 0; });
+  side.querySelectorAll('[data-area]').forEach(b => b.onclick = () => { state.area = b.dataset.area; renderInsights(); });
+  side.querySelectorAll('[data-hist]').forEach(b => b.onclick = () => { state.hist = b.dataset.hist; renderInsights(); });
+  side.querySelectorAll('[data-rwy]').forEach(b => b.onclick = () => { state.rwy = b.dataset.rwy; sim.setRunway(state.rwy); refresh(); renderInsights(); });
+  side.querySelectorAll('[data-wx]').forEach(b => b.onclick = () => { state.weather = b.dataset.wx; sim.setWeather(state.weather); renderInsights(); });
+  side.querySelectorAll('[data-ev]').forEach(b => b.onclick = () => { const e = sim.events[+b.dataset.ev]; watch(e.f, e.t - (e.kind === 'dep' ? 20 : 150)); });
+  side.querySelectorAll('button[data-x]').forEach(b => b.onclick = () => { flyTo(+b.dataset.x, +b.dataset.y, 1600); selectSpot(+b.dataset.x, +b.dataset.y); });
+  const hs = $('#hist');
+  if (hs) {
+    hs.onpointermove = e => { const i = e.target.dataset?.i; if (i === undefined) return hideTip();
+      const d = S[state.area][state.hist === 'lden' ? 'lden_hist' : 'lnight_hist'], tot = d.reduce((a, b) => a + b, 0);
+      showTip(e, `${BANDL[i]} dB · ${fmt(d[i])} buildings · ${pct(d[i] / tot * 100)}%`); };
+    hs.onpointerleave = hideTip;
+  }
+}
+
+const clockOf = t => { t = ((t % 86400) + 86400) % 86400; return `${String(Math.floor(t / 3600)).padStart(2, '0')}:${String(Math.floor(t / 60) % 60).padStart(2, '0')}`; };
+const OPS = { arr: 'arrival', dep: 'departure' };
+function flightTitle(f) {
+  if (f.cls === 'heli') return f.op === 'arr' ? 'Helicopter inbound' : 'Helicopter outbound';
+  return `${f.cls === 'jet' ? 'International' : 'Domestic'} ${OPS[f.op]}${f.ga ? ' · go-around' : ''}`;
+}
+function setTime(t) {
+  state.hour = ((t / 3600) % 24 + 24) % 24; $('#hour').value = state.hour;
+  if (state.metric !== 'hour') setMetric('hour'); else refresh();
+}
+function watch(f, t) {
+  setTime(t);
+  state.flight = f; state.follow = true;
+  if (state.speed > 10) { state.speed = 10; $('#speed').textContent = '10×'; }
+  if (!state.playing) $('#play').click();
+  showSide('flight');
+  const st = sim.sample(f, t, {});
+  flyTo(st.x, st.y, 2600);
+}
+function renderFlight() {
+  const f = state.flight, side = $('#side');
+  if (!f) return;
+  const simT = state.hour * 3600, i = sim.info(f, simT), T = meta.flight.types[f.type];
+  const thr = meta.flight.thr[sim.rwy] / 0.3048;
+  side.innerHTML = `<div class="card">
+    <div class="card-head"><div><p class="eyebrow">${flightTitle(f)} · SIM ${String(f.id).padStart(3, '0')}</p><p class="place">${T.label}</p></div>
+      <button class="x" id="flClose" aria-label="Close flight">✕</button></div>
+    <div class="readout"><b>${i.phase === 'Scheduled' || i.phase === 'Completed' ? '—' : Math.max(i.lamax, 40).toFixed(0)}</b><i style="width:10px;height:38px;border-radius:3px;background:${rampCss(i.lamax)};flex:none;margin-bottom:2px"></i>
+      <span>dB(A) LAmax on the ground below · ${i.phase}<em>${clockOf(simT)} simulated</em></span></div>
+    <div class="trio">
+      <div><b>${fmt(Math.round(i.alt / 10) * 10)}</b><span>ft altitude · ${fmt(Math.max(Math.round((i.alt - thr) / 10) * 10, 0))} above RWY</span></div>
+      <div><b>${Math.round(i.kt)}</b><span>kt ground speed</span></div>
+      <div><b>${i.vs > 0 ? '+' : ''}${fmt(Math.round(i.vs / 50) * 50)}</b><span>ft/min vertical</span></div>
+    </div>
+    <div><p class="eyebrow" style="margin-bottom:6px">Procedure flown</p>${f.procs.map(p => `<p>${p}</p>`).join('')}</div>
+    <div><p class="eyebrow" style="margin-bottom:4px">This flight</p><div class="list">
+      <button data-jump="${f.t0}"><span class="n">${f.op === 'arr' ? 'Enters the terminal area' : f.cls === 'heli' ? 'Engines start' : 'Lines up on RWY ' + sim.rwy}</span><span class="v mono">${clockOf(f.t0)}</span><span class="m">Start of simulated track</span></button>
+      ${f.ev.map(e => `<button data-jump="${e.t - (e.kind === 'dep' ? 20 : 90)}"><span class="n">${e.text.split(' · ')[0]}</span><span class="v mono" style="--c:${e.kind === 'ga' ? 'var(--bad)' : 'var(--accent)'}"><i></i>${clockOf(e.t)}</span><span class="m">Jump just before</span></button>`).join('')}
+      <button data-jump="${f.t1 - 30}"><span class="n">Leaves the simulation</span><span class="v mono">${clockOf(f.t1)}</span><span class="m">${f.op === 'arr' ? 'Vacates the runway' : 'Beyond the terminal area'}</span></button>
+    </div></div>
+    <div class="actions"><button class="btn" id="flFollow" aria-pressed="${state.follow}">${state.follow ? 'Stop following' : 'Follow with camera'}</button>${state.playing ? '' : '<button class="btn" id="flPlay">Play from here</button>'}</div>
+    <p class="note">LAmax estimate uses the type's single-event level and the slant distance to the ground directly below.</p>
+  </div>`;
+  $('#flClose').onclick = () => showSide(state.spot ? 'spot' : null);
+  $('#flFollow').onclick = () => { state.follow = !state.follow; renderFlight(); };
+  const fp = $('#flPlay'); if (fp) fp.onclick = () => $('#play').click();
+  side.querySelectorAll('[data-jump]').forEach(b => b.onclick = () => { setTime(+b.dataset.jump); state.follow = true; renderFlight(); });
+}
+
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+function surfaceH(x, y) {
+  const lv = state.relief > .01 ? (levelsAt(x, y)?.total ?? 40) : 0;
+  return (1 - state.relief) * demH(x, y) * state.exag + state.relief * Math.max(lv - 38, 0) * U.uReliefScale.value;
+}
+function groundAt(cx, cy) {
+  ndc.set(cx / innerWidth * 2 - 1, -cy / innerHeight * 2 + 1); ray.setFromCamera(ndc, camera);
+  const o = ray.ray.origin, d = ray.ray.direction; if (d.y >= -1e-4) return null;
+  let h = apElev * state.exag, x = 0, y = 0;
+  for (let it = 0; it < 8; it++) {
+    const t = (h - o.y) / d.y; x = o.x + d.x * t; y = -(o.z + d.z * t);
+    h = h * .3 + surfaceH(x, y) * .7;
+  }
+  return cellOf(x, y) < 0 ? null : [x, y];
+}
+const pin = new THREE.Mesh(new THREE.CylinderGeometry(3, 3, 160, 8, 1, true).translate(0, 80, 0), new THREE.MeshBasicMaterial({ color: 0xf8b425 }));
+pin.visible = false; scene.add(pin);
+const placePinMesh = () => { if (state.spot) pin.position.set(state.spot.x, surfaceH(state.spot.x, state.spot.y), -state.spot.y); };
+
+const el = renderer.domElement, chip = $('#hoverchip');
+let down = null, lastTap = 0, hoverReq = 0;
+el.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; chip.hidden = true; });
+el.addEventListener('pointerup', e => {
+  if (!down || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6 || performance.now() - down.t > 500 || e.button !== 0) return;
+  const f = sim.pickAt(e.clientX, e.clientY);
+  if (f) { state.flight = f; state.follow = false; showSide('flight'); return; }
+  const g = groundAt(e.clientX, e.clientY); if (!g) return;
+  const now = performance.now();
+  if (now - lastTap < 320) { zoomAt(g, 0.4); lastTap = 0; return; }
+  lastTap = now; selectSpot(...g);
+});
+el.addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse' || e.buttons) return;
+  cancelAnimationFrame(hoverReq);
+  hoverReq = requestAnimationFrame(() => {
+    const g = groundAt(e.clientX, e.clientY), r = g && levelsAt(...g);
+    if (!r) { chip.hidden = true; return; }
+    chip.querySelector('i').style.background = rampCss(r.total);
+    chip.querySelector('span').textContent = `${r.total.toFixed(0)} dB · ${nearestPlace(...g)}`;
+    chip.hidden = false;
+    chip.style.left = Math.min(e.clientX + 14, innerWidth - chip.offsetWidth - 8) + 'px';
+    chip.style.top = (e.clientY + 16) + 'px';
+  });
+});
+el.addEventListener('pointerleave', () => chip.hidden = true);
+el.addEventListener('contextmenu', e => e.preventDefault());
+addEventListener('keydown', e => {
+  if (e.target.closest('input')) return;
+  if (e.key === 'Escape') { if (state.view === 'flight') showSide(state.spot ? 'spot' : null); else clearSpot(); }
+  if (e.key === '+' || e.key === '=') zoomBy(0.7);
+  if (e.key === '-') zoomBy(1.45);
+});
+
+let tween = null;
+function animateTo(p, t, dur = 1200) {
+  const from = { p: camera.position.clone(), t: controls.target.clone() }, t0 = performance.now();
+  dur = reduceMotion ? 1 : dur;
+  tween = () => {
+    const k = Math.min((performance.now() - t0) / dur, 1), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    camera.position.lerpVectors(from.p, p, e); controls.target.lerpVectors(from.t, t, e);
+    if (k >= 1) tween = null;
+  };
+}
+function flyTo(x, y, dist = 2200) {
+  const gy = surfaceH(x, y), dir = camera.position.clone().sub(controls.target).normalize();
+  if (dir.y < 0.35) dir.set(-0.3, 0.75, 0.6).normalize();
+  const t = new THREE.Vector3(x, gy, -y);
+  animateTo(t.clone().add(dir.multiplyScalar(dist)), t);
+}
+function zoomAt([x, y], f) {
+  const t = new THREE.Vector3(x, surfaceH(x, y), -y), off = camera.position.clone().sub(controls.target).multiplyScalar(f);
+  const len = THREE.MathUtils.clamp(off.length(), controls.minDistance, controls.maxDistance);
+  animateTo(t.clone().add(off.setLength(len)), t, 700);
+}
+const zoom = { log: 0, anchor: new THREE.Vector3(), hasAnchor: false };
+function zoomBy(f, anchor = null) {
+  tween = null;
+  zoom.log += Math.log(f);
+  zoom.log = THREE.MathUtils.clamp(zoom.log, -2.5, 2.5);
+  zoom.hasAnchor = !!anchor && !state.follow;
+  if (zoom.hasAnchor) zoom.anchor.copy(anchor);
+}
+function stepZoom(dt) {
+  if (Math.abs(zoom.log) < 1e-4) { zoom.log = 0; return; }
+  const step = zoom.log * (1 - Math.exp(-dt * 9));
+  zoom.log -= step;
+  const d = camera.position.distanceTo(controls.target);
+  const nd = THREE.MathUtils.clamp(d * Math.exp(step), controls.minDistance, controls.maxDistance);
+  if (Math.abs(nd - d) < 1e-3) { zoom.log = 0; return; }
+  const P = zoom.hasAnchor ? zoom.anchor : controls.target;
+  let f = nd / d;
+  if (f < 1) { const dp = camera.position.distanceTo(P); if (dp * f < 150) { f = Math.min(1, 150 / dp); zoom.log = 0; } }
+  camera.position.sub(P).multiplyScalar(f).add(P);
+  if (zoom.hasAnchor) controls.target.sub(P).multiplyScalar(f).add(P);
+}
+function keepAboveGround() {
+  const x = camera.position.x, y = -camera.position.z, floor = Math.max(groundY(x, y), state.relief > .01 ? surfaceH(x, y) : 0) + 40;
+  if (camera.position.y < floor) camera.position.y = floor;
+  controls.target.x = THREE.MathUtils.clamp(controls.target.x, G.x0 - 2000, G.x0 + W + 2000);
+  controls.target.z = THREE.MathUtils.clamp(controls.target.z, -(G.y0 + H + 2000), -(G.y0 - 2000));
+}
+$('#scene').addEventListener('wheel', e => {
+  e.preventDefault(); e.stopPropagation();
+  chip.hidden = true;
+  let dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1);
+  dy = THREE.MathUtils.clamp(dy, -150, 150);
+  const g = groundAt(e.clientX, e.clientY);
+  zoomBy(Math.exp(dy * 0.0011), g ? new THREE.Vector3(g[0], surfaceH(g[0], g[1]), -g[1]) : null);
+}, { capture: true, passive: false });
+controls.addEventListener('start', () => { tween = null; if (state.follow && down) { state.follow = false; if (state.view === 'flight') renderFlight(); } });
+el.addEventListener('pointerup', () => { setTimeout(() => { down = null; }, 0); });
+$('#zIn').onclick = () => zoomBy(0.6);
+$('#zOut').onclick = () => zoomBy(1.65);
+$('#vHome').onclick = () => { $('#vTop').setAttribute('aria-pressed', false); animateTo(HOME.p.clone(), HOME.t.clone()); };
+$('#vTop').onclick = () => {
+  const top = $('#vTop').getAttribute('aria-pressed') !== 'true';
+  $('#vTop').setAttribute('aria-pressed', top);
+  const d = camera.position.distanceTo(controls.target), t = controls.target.clone();
+  const dir = top ? new THREE.Vector3(0, 1, 0.02) : new THREE.Vector3(-0.3, 0.75, 0.6);
+  animateTo(t.clone().add(dir.normalize().multiplyScalar(d)), t, 900);
+};
+
+const audio = (() => {
+  let ctx, gRoad, gAir, gAct, master, hornRate = 0, timer;
+  function noiseBuf() { const b = ctx.createBuffer(1, ctx.sampleRate * 3, ctx.sampleRate), d = b.getChannelData(0); let l = 0;
+    for (let i = 0; i < d.length; i++) { l = (l + .02 * (Math.random() * 2 - 1)) / 1.02; d[i] = l * 3.5; } return b; }
+  function chain(freq, type, q) { const s = ctx.createBufferSource(); s.buffer = noiseBuf(); s.loop = true;
+    const f = ctx.createBiquadFilter(); f.type = type; f.frequency.value = freq; f.Q.value = q; const g = ctx.createGain(); g.gain.value = 0;
+    s.connect(f).connect(g).connect(master); s.start(); return g; }
+  function horn() {
+    if (!ctx || !state.listen) return;
+    if (Math.random() < hornRate) {
+      const t = ctx.currentTime, o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), p = ctx.createStereoPanner();
+      o.type = o2.type = 'square'; const f = 380 + Math.random() * 260; o.frequency.value = f; o2.frequency.value = f * 1.26;
+      const dur = .12 + Math.random() * .35;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.05, t + .01); g.gain.setValueAtTime(.05, t + dur); g.gain.linearRampToValueAtTime(0, t + dur + .03);
+      p.pan.value = Math.random() * 1.6 - .8;
+      o.connect(g); o2.connect(g); g.connect(p).connect(master); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
+    }
+    timer = setTimeout(horn, 140);
+  }
+  return {
+    toggle(on) {
+      try {
+        if (on && !ctx) { ctx = new AudioContext(); master = ctx.createGain(); master.connect(ctx.destination);
+          gRoad = chain(500, 'lowpass', .5); gAir = chain(160, 'lowpass', .9); gAct = chain(1400, 'bandpass', .6); }
+        if (!ctx) return;
+        clearTimeout(timer);
+        if (on) { ctx.resume(); horn(); } else ctx.suspend();
+      } catch { state.listen = false; }
+    },
+    update(r) {
+      if (!ctx || !state.listen || !r) return;
+      const t = ctx.currentTime, tot = r.parts.reduce((a, b) => a + b, r.bg);
+      master.gain.setTargetAtTime(Math.min(Math.pow(10, (r.total - 88) / 20) * 3, .9), t, .25);
+      gRoad.gain.setTargetAtTime((r.parts[0] + r.bg * .5) / tot, t, .25);
+      gAir.gain.setTargetAtTime(r.parts[1] / tot * 1.6, t, .25);
+      gAct.gain.setTargetAtTime((r.parts[2] + r.parts[3]) / tot * .7, t, .25);
+      hornRate = state.on[0] ? Math.min(Math.pow(10, (r.raw[0] - 74) / 10) * .25, .6) * r.parts[0] / tot : 0;
+    },
+  };
+})();
+
+const tip = $('#tip');
+function showTip(e, html) { tip.innerHTML = html; tip.hidden = false; const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - r.width - 8) + 'px'; tip.style.top = Math.max(e.clientY - r.height - 10, 8) + 'px'; }
+const hideTip = () => tip.hidden = true;
+
+function drawStrip() {
+  const Wd = 700, Ht = 46, lo = 42, hi = 70, x = h => h / 23 * Wd, y = v => Ht - 2 - (v - lo) / (hi - lo) * (Ht - 6);
+  const hr = meta.hourly, cur = state.metric === 'hour' ? x(state.hour) : -10;
+  let ticks = ''; for (let h = 0; h < 24; h += 3) ticks += `<text x="${x(h)}" y="${Ht + 10}" text-anchor="${h === 0 ? 'start' : 'middle'}" style="font:9px var(--f-mono);fill:var(--muted)">${String(h).padStart(2, '0')}</text>`;
+  $('#stripSvg').innerHTML = `<polygon points="${hr.map((v, h) => `${x(h)},${y(v[1])}`).join(' ')} ${Wd},${Ht} 0,${Ht}" fill="var(--accent)" opacity=".2"/>
+    <polyline points="${hr.map((v, h) => `${x(h)},${y(v[0])}`).join(' ')}" fill="none" stroke="var(--fg)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+    <line x1="${cur}" x2="${cur}" y1="0" y2="${Ht}" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>` + ticks;
+  $('#clockNote').textContent = state.metric === 'hour' ? `${hr[Math.round(state.hour) % 24][2]}% of buildings ≥ 65 dB now` : '';
+}
+$('#hour').addEventListener('pointermove', e => {
+  const r = e.target.getBoundingClientRect(), h = Math.max(0, Math.min(23, Math.round((e.clientX - r.left) / r.width * 23))), v = meta.hourly[h];
+  showTip(e, `${String(h).padStart(2, '0')}:00 · median ${v[0]} dB · loudest 10% ${v[1]} dB`);
+});
+$('#hour').addEventListener('pointerleave', hideTip);
+
+let spotTimer = 0;
+function refresh(spotToo = true) {
+  syncUniforms();
+  $('#clockTime').innerHTML = (state.metric === 'hour' ? fmtHour(state.hour) : state.metric === 'lden' ? 'Lden' : 'Lnight') +
+    '<small>' + (state.metric === 'hour' ? 'Nepal time' : state.metric === 'lden' ? '24 h weighted' : '23:00–07:00') + '</small>';
+  drawStrip();
+  if (spotToo && state.spot) {
+    clearTimeout(spotTimer);
+    spotTimer = setTimeout(() => { if (state.spot) selectSpot(state.spot.x, state.spot.y, false); }, state.playing ? 250 : 60);
+  }
+}
+const setMetric = m => { state.metric = m; $$('#metric button').forEach(x => x.setAttribute('aria-pressed', x.dataset.m === m)); refresh(); };
+$$('#metric button').forEach(b => b.onclick = () => setMetric(b.dataset.m));
+$$('#sources .chip').forEach(b => b.onclick = () => {
+  const i = +b.dataset.s; state.on[i] = state.on[i] ? 0 : 1; b.setAttribute('aria-pressed', !!state.on[i]); refresh();
+});
+const bindSwitch = (id, key) => $(id).onchange = e => { state[key] = e.target.checked ? 1 : 0; refresh(false); };
+bindSwitch('#oRelief', 'reliefTarget'); bindSwitch('#oBld', 'bld'); bindSwitch('#oContours', 'contours');
+const setGlow = v => { U.uGlow.value = v / 100; $('#glow').value = v; $('#glowV').textContent = v + '%'; };
+try { const g = localStorage.getItem('atlas-glow'); if (g !== null) setGlow(+g); } catch {}
+$('#glow').oninput = e => { setGlow(+e.target.value); try { localStorage.setItem('atlas-glow', e.target.value); } catch {} };
+bindSwitch('#oTraffic', 'traffic'); bindSwitch('#oFlights', 'flights'); bindSwitch('#oProcs', 'procs');
+$('#exag').oninput = e => { state.exag = +e.target.value; $('#exagV').textContent = state.exag.toFixed(1) + '×'; sim.drawProcedures(); refresh(false); placePinMesh(); };
+$('#layersBtn').onclick = () => { const open = $('#layers').hidden; $('#layers').hidden = !open; $('#layersBtn').setAttribute('aria-expanded', open); };
+document.addEventListener('pointerdown', e => { if (!$('#layers').hidden && !e.target.closest('#layers, #layersBtn')) { $('#layers').hidden = true; $('#layersBtn').setAttribute('aria-expanded', false); } });
+$('#insightsBtn').onclick = () => { const open = state.view === 'insights' && state.tab !== 'airport'; if (!open && state.tab === 'airport') state.tab = 'overview'; showSide(open ? (state.spot ? 'spot' : null) : 'insights'); };
+$('#airportBtn').onclick = () => { const open = state.view === 'insights' && state.tab === 'airport'; state.tab = 'airport'; showSide(open ? (state.spot ? 'spot' : null) : 'insights'); };
+const SPEEDS = [1, 10, 60, 300];
+$('#speed').onclick = () => { state.speed = SPEEDS[(SPEEDS.indexOf(state.speed) + 1) % SPEEDS.length]; $('#speed').textContent = state.speed + '×'; };
+$('#hour').oninput = e => { state.hour = +e.target.value; if (state.metric !== 'hour') setMetric('hour'); else refresh(); };
+$('#play').onclick = () => {
+  state.playing = !state.playing;
+  $('#play').setAttribute('aria-label', state.playing ? 'Pause' : 'Play the day');
+  $('#playIcon').innerHTML = state.playing ? '<path d="M1 1h3.5v12H1zM7.5 1H11v12H7.5z" fill="currentColor"/>' : '<path d="M1 1l10 6-10 6z" fill="currentColor"/>';
+  if (state.playing && state.metric !== 'hour') setMetric('hour');
+};
+function setBar(open) {
+  $('#bar').classList.toggle('collapsed', !open);
+  $('#barToggle').textContent = open ? 'Hide' : 'Show';
+  $('#barToggle').setAttribute('aria-expanded', open);
+}
+$('#barToggle').onclick = () => setBar($('#bar').classList.contains('collapsed'));
+if (innerWidth <= 760) { setBar(false); $('#hint').textContent = 'Pinch to zoom · drag to pan · two-finger twist to rotate · tap a spot to analyse it'; }
+
+function applyHash() {
+  const h = location.hash.slice(1);
+  if (h === 'night') { state.hour = 1; $('#hour').value = 1; setMetric('hour'); }
+  if (h === 'lden' || h === 'lnight') setMetric(h);
+  if (h === 'relief' && !state.reliefTarget) $('#oRelief').click();
+  if (h === 'airport') { state.tab = 'airport'; showSide('insights'); flyTo((RA[0] + RB[0]) / 2, (RA[1] + RB[1]) / 2 - 1500, 9000); }
+  if (h === 'goaround') {
+    state.weather = 'storm'; sim.setWeather('storm');
+    const e = sim.events.find(e => e.kind === 'ga' && e.t > 9.5 * 3600 && e.f.cls === 'jet') || sim.events.find(e => e.kind === 'ga');
+    if (e) watch(e.f, e.t - 40);
+  }
+  if (h === 'thamel') { state.hour = 22; $('#hour').value = 22; setMetric('hour'); flyTo(-2198, 1842, 1400); selectSpot(-2198, 1842); }
+}
+addEventListener('hashchange', applyHash);
+
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); labelRenderer.setSize(innerWidth, innerHeight);
+});
+refresh(); applyHash();
+const clock = new THREE.Clock();
+let frame = 0, lastRefresh = 0, lastUi = 0, lastAir = 0;
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), .05), t = clock.elapsedTime;
+  if (state.playing) {
+    state.hour = (state.hour + dt * state.speed / 3600) % 24; $('#hour').value = state.hour;
+    if (t - lastRefresh > .12) { lastRefresh = t; refresh(); }
+  }
+  state.relief += (state.reliefTarget - state.relief) * Math.min(dt * 3, 1);
+  if (Math.abs(state.relief - state.reliefTarget) < .002) state.relief = state.reliefTarget;
+  U.uRelief.value = state.relief;
+  const flat = state.relief > .02;
+  BLD.mesh.visible = state.bld && !flat;
+  traffic.pts.visible = state.traffic && !flat;
+  if (traffic.pts.visible) traffic.update(dt);
+  const simT = state.hour * 3600;
+  sim.update(dt, simT, t);
+  sim.lineGroup.visible = state.procs && state.flights && state.on[1] && !flat;
+  if (state.flight && state.follow) {
+    const o = sim.live.get(state.flight);
+    if (o && !tween) { const d = o.position.clone().sub(controls.target); controls.target.add(d); camera.position.add(d); }
+  }
+  if (t - lastUi > .25) {
+    lastUi = t;
+    const hovering = $('#side').matches(':hover');
+    if (state.view === 'flight' && !hovering) renderFlight();
+    const last = sim.events.filter(e => e.t <= simT).slice(-1)[0];
+    $('#ticker').textContent = last ? `${clockOf(last.t)} · ${last.text}` : 'City median · loudest 10% shaded';
+    if (!hovering && state.view === 'insights' && state.tab === 'airport' && state.playing && t - lastAir > 2) { lastAir = t; renderInsights(); }
+  }
+  runway.visible = !flat; runway.position.y = apElev * state.exag + 2;
+  if (state.relief > 0 && state.relief < 1) placePinMesh();
+  if (tween) tween();
+  stepZoom(dt);
+  controls.update();
+  keepAboveGround();
+  const dist = camera.position.distanceTo(controls.target);
+  camera.near = THREE.MathUtils.clamp(dist / 60, 2, 40); camera.updateProjectionMatrix();
+  if (frame++ % 6 === 0) for (const l of labels) {
+    const u = l.userData; l.position.y = (1 - state.relief) * demH(u.x, u.y) * state.exag + u.lift;
+    const d = camera.position.distanceTo(l.position);
+    l.visible = !flat && d > u.minDist && d < u.maxDist;
+  }
+  renderer.render(scene, camera);
+  labelRenderer.render(scene, camera);
+});
+setTimeout(() => $('#loading').classList.add('done'), 300);
+</script>
+</body>
+</html>

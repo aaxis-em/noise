@@ -1,0 +1,18 @@
+[out:json][timeout:180];
+(
+ way["aeroway"~"^(runway|taxiway|apron|aerodrome|helipad)$"](27.635,85.265,27.765,85.405);
+ node["aeroway"="helipad"](27.635,85.265,27.765,85.405);
+ nwr["amenity"~"^(hospital|clinic|school|college|university|kindergarten|bus_station|marketplace)$"](27.635,85.265,27.765,85.405);
+ nwr["healthcare"="hospital"](27.635,85.265,27.765,85.405);
+ way["landuse"~"^(industrial|commercial|retail)$"](27.635,85.265,27.765,85.405);
+ way["leisure"~"^(park|golf_course|stadium)$"](27.635,85.265,27.765,85.405);
+ way["landuse"~"^(forest|grass|recreation_ground)$"](27.635,85.265,27.765,85.405);
+ way["waterway"="river"](27.635,85.265,27.765,85.405);
+ nwr["historic"~"^(monument|temple|archaeological_site)$"](27.635,85.265,27.765,85.405);
+ nwr["tourism"~"^(attraction)$"](27.635,85.265,27.765,85.405);
+ node["place"~"^(suburb|neighbourhood|quarter|city|town)$"](27.635,85.265,27.765,85.405);
+ node["highway"="traffic_signals"](27.635,85.265,27.765,85.405);
+ nwr["amenity"="place_of_worship"]["name"](27.635,85.265,27.765,85.405);
+ relation["boundary"="administrative"]["admin_level"="7"](27.635,85.265,27.765,85.405);
+);
+out tags geom qt;

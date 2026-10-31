@@ -1,0 +1,2646 @@
+TEL: 977-015718027
+   977-015718014
+                                                                   NEPAL                               AIRAC
+                                                                                                  AIP AMENDMENT
+                                                   AERONAUTICAL INFORMATION
+AFTN:VNKTYOYX                                                                                             06/26
+                                                    MANAGEMENT DEPARTMENT
+Email: caanais(a),caanenal.2ov.nn
+Website: caanenal.2ov.nn          CIVIL AVIATION AUTHORITY OF NEPAL
+                                       SINAMANGAL, KATHMANDU                                          28May2026
+
+
+
+
+                             EFFECTIVE DATE •• 9 JULY2026
+1. Contents
+   1.1 PBN Flight Procedure ofNepalgunj Airport (VNNG).
+2. On 9 July 2026, remove and insert following pages.
+
+          Remove the following pages:                                           Insert the following pages:
+
+          GENERAL ( GEN)
+          GEN0.4-8                          26MAY2026                           GEN0.4-8          9JULY2026
+
+          AERODROME (AD)
+          VNNGAD
+          ....................... .......................                       VNNGAD2-25        9JULY2026
+          ....................... .......................                       VNNGAD2-26        9JULY2026
+          ....................... .......................                       VNNGAD2-27        9JULY2026
+          ....................... .......................                       VNNGAD2-2 8       9JULY2026
+          ....................... .......................                       VNNGAD2-29        9JULY2026
+          ....................... .......................                       VNNGAD2-30        9JULY2026
+          ....................... .......................                       VNNGAD2-31        9JULY2026
+          . . . .................... .............. . . . . .....               VNNGAD2-32        9JULY2026
+          ....................... .......................                       VNNGAD2-33        9JULY2026
+          ....................... .......................                       VNNGAD2-34        9JULY2026
+          ....................... .......................                       VNNGAD2-35        9JULY2026
+          ....................... ................... ....                      VNNGAD2-36        9JULY2026
+          ....................... ........ .... . . ..... ....                  VNNGAD2-37        9JULY2026
+          ....................... ................ . . . . ...                  VNNGAD2-3 8       9JULY2026
+          ....................... .......................                       VNNGAD2-39        9JULY2026
+          ....................... .......................                       VNNGAD2-40        9JULY2026
+          ....................... .................. .....                      VNNGAD2-41        9JULY2026
+          ....................... · · · · · · · · · · · · · · · · · · · · ···   VNNGAD2-42        9JULY2026
+GEN 0.4-8                                                                                AIP
+9 July 2026                                                                           NEPAL
+
+              VNNG AD 2 – 1     3 DECEMBER 2023           VNPR AD 2 – 6    23 FEBRUARY 2023
+ VNNG         VNNG AD 2 – 2     30 APRIL 2025             VNPR AD 2 – 7    23 FEBRUARY 2023
+ AD 2         VNNG AD 2 – 3     26 MAY 2026                                23 FEBRUARY 2023
+              VNNG AD 2 – 4     26 MAY 2026               VNPR AD 2 – 8
+              VNNG AD 2 – 5     26 MAY 2026
+              VNNG AD 2 – 6     26 MAY 2026
+                                                          VNPR AD 2 – 9    23 FEBRUARY 2023
+              VNNG AD 2 – 7     26 MAY 2026               VNPR AD 2 – 10   23 FEBRUARY 2023
+              VNNG AD 2 – 8     26 MAY 2026               VNPR AD 2 – 11   23 FEBRUARY 2023
+              VNNG AD 2 – 9     26 MAY 2026               VNPR AD 2 – 12
+              VNNG AD 2 – 10    26 MAY 2026                                23 FEBRUARY 2023
+              VNNG AD 2 – 11    9 JULY 2026               VNPR AD 2 – 13   23 FEBRUARY 2023
+              VNNG AD 2 – 12    26 MAY 2026               VNPR AD 2 – 14   23 FEBRUARY 2023
+              VNNG AD 2 – 13    26 MAY 2026               VNPR AD 2 – 15
+              VNNG AD 2 – 14    26 MAY 2026                                23 FEBRUARY 2023
+              VNNG AD 2 – 15    26 MAY 2026               VNPR AD 2 – 16   23 FEBRUARY 2023
+              VNNG AD 2 – 16    26 MAY 2026               VNPR AD 2 – 17   23 FEBRUARY 2023
+              VNNG AD 2 – 17    26 MAY 2026               VNPR AD 2 – 18   23 FEBRUARY 2023
+              VNNG AD 2 – 18    26 MAY 2026
+              VNNG AD 2 – 19    26 MAY 2026               VNPR AD 2 – 19   23 FEBRUARY 2023
+              VNNG AD 2 – 20    26 MAY 2026               VNPR AD 2 – 20   30 APRIL 2025
+              VNNG AD 2 – 21    26 MAY 2026               VNPR AD 2 – 21   30 APRIL 2024
+              VNNG AD 2 – 22    26 MAY 2026               VNPR AD 2 – 22
+              VNNG AD 2 – 23    26 MAY 2026                                23 FEBRUARY 2023
+              VNNG AD 2 – 24    26 MAY 2026               VNPR AD 2 – 23   30 APRIL 2025
+              VNNG AD 2 – 25    9 JULY 2026               VNPR AD 2 – 24   23 FEBRUARY 2023
+              VNNG AD 2 – 26    9 JULY 2026               VNPR AD 2 – 25
+              VNNG AD 2 – 27    9 JULY 2026                                23 FEBRUARY 2023
+              VNNG AD 2 – 28    9 JULY 2026               VNPR AD 2 – 26   26 JANUARY 2025
+              VNNG AD 2 – 29    9 JULY 2026               VNPR AD 2 – 27   23 FEBRUARY 2023
+              VNNG AD 2 – 30    9 JULY 2026               VNPR AD 2 – 28
+                                9 JULY 2026                                23 MARCH 2023
+              VNNG AD 2 – 31                              VNPR AD 2 – 29
+              VNNG AD 2 – 32    9 JULY 2026                                27 JUNE 2024
+              VNNG AD 2 – 33    9 JULY 2026               VNPR AD 2 – 30   30 APRIL 2024
+              VNNG AD 2 – 34    9 JULY 2026               VNPR AD 2 – 31   30 APRIL 2024
+              VNNG AD 2 – 35    9 JULY 2026
+                                9 JULY 2026               VNPR AD 2 – 32   30 APRIL 2024
+              VNNG AD 2 – 36
+              VNNG AD 2 – 37    9 JULY 2026               VNPR AD 2 – 33   30 APRIL 2024
+              VNNG AD 2 – 38    9 JULY 2026               VNPR AD 2 – 34   21 AUGUST 2023
+              VNNG AD 2 – 39    9 JULY 2026               VNPR AD 2 – 35
+              VNNG AD 2 – 40    9 JULY 2026                                3 DECEMBER 2023
+              VNNG AD 2 – 41    9 JULY 2026               VNPR AD 2 – 36   23 MARCH 2023
+              VNNG AD 2 – 42    9 JULY 2026               VNPR AD 2 – 37   4 SEPTEMBER 2025
+                                                          VNPR AD 2 – 38   23 MARCH 2023
+              VNPK AD 2 – 1                        VNRB
+  VNPK                           27 JUNE 2024             VNRB AD 2 – 1    01 JULY 2022
+  AD 2        VNPK AD 2 – 2      23 MARCH 2023 27 AD 2
+              VNPK AD 2 – 3                               VNRB AD 2 – 2    30 APRIL 2025
+                                 JUNE 2024
+              VNPK AD 2 – 4      27 JUNE 2024             VNRB AD 2 – 3    01 JULY 2022
+              VNPK AD 2 – 5      27 JUNE 2024             VNRB AD 2 – 4    01 JULY 2022
+              VNPK AD 2 – 6      20 NOVEMBER 2025         VNRB AD 2 – 5    26 JANUARY 2025
+              VNPK AD 2 – 7      01 JULY 2022             VNRB AD 2 – 6    01 JULY 2022
+              VNPK AD 2 – 8      27 JUNE 2024             VNRB AD 2 – 7    01 JULY 2022
+              VNPK AD 2 – 9      27 JUNE 2024             VNRB AD 2 – 8    01 JULY 2022
+              VNPK AD 2 – 10     27 JUNE 2024
+              VNPK AD 2 – 11                              VNRB AD 2 – 9    01 JULY 2022
+                                 27 JUNE 2024
+              VNPK AD 2 – 12     01 JULY 2022             VNRB AD 2 – 10   01 JULY 2022
+              VNPK AD 2 – 13     30 APRIL 2023            VNRB AD 2 – 11   01 JULY 2022
+              VNPK AD 2 – 14     3 DECEMBER 2023          VNRB AD 2 – 12   01 JULY 2022
+              VNPK AD 2 – 15     23 FEBRUARY 2023         VNRB AD 2 – 13   01 JULY 2022
+              VNPR AD   2 – 1   27 JUNE 2024              VNRB AD 2 – 14   01 JULY 2022
+ VNPR         VNPR AD   2 – 2   26 JANUARY 2025           VNRB AD 2 – 15   01 JULY 2022
+ AD 2         VNPR AD   2 – 3   27 JUNE 2024              VNRB AD 2 – 16   01 JULY 2022
+              VNPR AD   2 – 4   23 FEBRUARY 2023          VNRB AD 2 – 17   01 JULY 2022
+              VNPR AD   2 – 5   23 FEBRUARY 2023
+CIVIL AVIATION AUTHORITY OF NEPAL                                          AMDT 06/2026
+AIP                                                                                               VNNG AD 2-25
+NEPAL                                                                                               9 July 2026
+
+
+
+                        RNP Approach Procedures at Nepalgunj Airport (VNNG)
+        1.   INTRODUCTION
+             1.1 The following RNP1 SIDs/STARs and RNP APCH and associated Missed Approach
+                 Procedures are designed for VNNG in accordance with the criteria as stipulated in the ICAO
+                 PANS-OPS (DOC 8168 Vol. II).
+             1.2 The RNP1 SIDs/STARs and RNP APCH Procedures at VNNG is designed to enhance the
+                 safety and efficiency of the aircraft operations to materialize the National PBN Implementation
+                 Plan of Nepal.
+             1.3 Two RNP approach procedure with (LNAV/VNAV, LNAV Only) along with two RNP1
+                 STARs and ten RNP1 SIDs have been designed which utilizes GNSS as a navigation system
+                 as stipulated in ICAO PBN Manual DOC 9613.
+             1.4 A full arrival, approach and missed approach trajectories along with associated holding have
+                 been designed.
+
+
+        2. APPROVED USERS, EQUIPMENT AND OPERATIONS
+             2.1 For the RNP1 SIDs/STARs, RNP APCH and associated Missed Approach, the operators shall
+                 ensure that they hold all necessary operational approval from Civil Aviation Authority of Nepal
+                 (CAAN).
+             2.2 The aircraft shall be equipped with GNSS as specified in Nepalese Flight Operations
+                 Requirements (FOR).
+             2.3 All necessary navigation system are to be installed onboard so as to keep the track keeping
+                 accuracy while commencing RNP1, RNP APCH and associated Missed Approach.
+             2.4 Before commencing the procedure, pilot in command must ensure that the navigation database
+                 is current and the aircraft's capability of conducting the procedure like GNSS availability,
+                 system performance, etc.
+
+         3. NAMING OF PROCEDURES
+             There are two RNP1 STARs, ten RNP1 SIDs and two RNP APCH ((LNAV/VNAV, LNAV Only)
+             procedures for Nepalgunj Runway 08 and another for Nepalgunj Runway 26 and are named in
+             accordance with the ICAO naming convention as tabulated below.
+
+         4. RNP CAPABILITY LOST
+             If the RNP Approach capability is lost, ATC shall be informed as soon as possible the alternate
+             course of action from the pilots of the concerned aircraft.
+
+
+
+
+AMDT 06/2026                                                        CIVIL AVIATION AUTHORITY OF NEPAL
+    AIP                                                                                                                     VNNG AD 2-26
+    NEPAL                                                                                                                     9 July 2026
+
+
+
+    5. List of Significant points:
+     Waypoint                                                                Coordinates
+      Identifier
+    TULVI                              28°06'42.00" N                                                082°17'30.00" E
+    UPKOB                              28°04' 57.41" N                                               081°57' 00.35" E
+    NG102                              28°07' 52.21" N                                               081°51' 47.47" E
+    NG101                              28°07' 08.24" N                                               081°46' 33.44" E
+    LILKO                              28°14' 52.00" N                                               081°36' 34.00" E
+    IVSOM                              28°15' 30.00" N                                               081°35'11.00" E
+    NG203                              28°12' 15.88" N                                               081°27' 57.42" E
+    NG202                              28°05' 07.53" N                                               081°32' 18.92" E
+    NG201                              28°05' 38.35" N                                               081°35' 56.02" E
+    NG401                              28°17' 01.84" N                                               081°52' 21.53" E
+    NG402                              28°15' 11.12" N                                               082°15' 37.37" E
+    THARA                              27°57' 20.00" N                                               083°00' 00.00" E
+    PUBOB                              28°08' 40.00" N                                               083°00' 00.00" E
+    NG501                              28°06' 52.05" N                                               081°44' 38.19" E
+    ENVAD                              28°06' 27.14" N                                               082°01' 21.39" E
+    NG301                              28°00' 23.02" N                                               081°48' 21.22" E
+    NG302                              27°58' 21.28" N                                               082°11' 49.50" E
+    NG303                              27°55' 07.55" N                                               082°38' 47.32" E
+    NG304                              28°07' 58.64" N                                               081°40' 27.78" E
+    RWY08                              28°06' 08.20" N                                               081°39' 26.80" E
+    RWY26                              28°06' 16.90" N                                               081°40' 28.42" E
+
+
+    6. Coding Table: TULVI 1A RWY08
+                                                                                                                                  Navigation
+    Serial     Path       Waypoint        Fly-   Course/Track    Magnetic     Distance     Turn        Altitude   Speed    VPA/
+                                                                                                                                  Specificatio
+     No.     Descriptor   Identifier      over     (°M/T)        Variation     (NM)      Direction       (ft)      (kts)   TCH
+                                                                                                                                       n
+
+     001        IF         TULVI           -           -             -           -           -         +10500       -       -       RNP-1
+
+
+     002        TF        UPKOB            -     264° (264.5°)       -          18.2         -          +6000       -       -       RNP-1
+
+
+     003        TF         NG102           -     302°(302.2°)        -          5.4          -            -         -       -       RNP-1
+
+
+     004        TF         LILKO           -     297°(297.4°)        -          15.1         -          +6000       -       -       RNP-1
+
+
+
+
+AMDT 06/2026                                                                     CIVIL AVIATION AUTHORITY OF NEPAL
+    AIP                                                                                                                        VNNG AD 2-27
+    NEPAL                                                                                                                        9 July 2026
+
+
+    7. Coding Table: TULVI 1B RWY 26
+
+     Serial     Path       Waypoint     Fly-                    Magnetic     Distance      Turn       Altitude   Speed      VPA/      Navigation
+                                               Course(°M/°T)
+      No.     Descriptor   Identifier   over                    Variation     (NM)       Direction      (ft)      (kts)     TCH      Specification
+
+      001        IF         TULVI         -             -              -            -           -     +10500           -      -         RNP-1
+
+      002        TF         UPKOB         -     264° (264.4)           -       18.2             -      +5500           -      -         RNP-1
+
+
+
+
+    8. Coding Table: RNP RWY 08 (LNAV/VNAV, LNAV Only)
+
+
+                                                                                                                                      Navigation
+     Serial     Path       Waypoint     Fly-                   Magnetic     Distance      Turn       Altitude    Speed      VPA/
+                                               Course(°M)                                                                             Specificatio
+      No.     Descriptor   Identifier   over                   Variation     (NM)       Direction      (ft)       (kts)     TCH
+                                                                                                                                           n
+                            LILKO
+      001        IF                      -          -              -           -            -        +6000        180          -      RNP APCH
+                             (IAF)
+
+      002        TF         NG203        -         250°            -          8.0          -            -          -           -      RNP APCH
+
+                            NG202
+      003        TF                               151°             -          8.0          -         +2100         -                  RNP APCH
+                             (IF)
+
+                            NG201
+      004        TF                      -        080°             -          3.2          -         +1600         -           -      RNP APCH
+                            (FAF)
+
+                           RWY08
+      005        TF                      Y        080°             -          3.1          -          + 562        -       3.00/50    RNP APCH
+                           (MAPt)
+
+                           RWY08
+      006        CA                      -        080°             -           -           L         @2200         -           -      RNP APCH
+                           (MAPt)
+
+      007        DF         LILKO        -          -              -           -            -        +6000         -           -      RNP APCH
+
+                            LILKO
+      008        HM                      -        250°             -           -           R         +6000        180          -         RNP1
+                           (MAHF)
+
+
+
+
+AMDT 06/2026                                                                  CIVIL AVIATION AUTHORITY OF NEPAL
+    AIP                                                                                                                                      VNNG AD 2-28
+    NEPAL                                                                                                                                      9 July 2026
+
+
+
+    9. Coding Table: RNP RWY 26 (LNAV/VNAV, LNAV Only)
+
+                            Path            Waypoint      Fly-    Course    Magnetic    Distance     Turn      Altitude   Speed      VPA/         Navigation
+       Serial No.
+                          Descriptor        Identifier    over     (°M)     Variation    (NM)      Direction     (ft)      (kts)     TCH         Specification
+
+                                             UPKOB
+            001                IF                          -            -       -          -           -        +5500           -        -        RNP APCH
+                                              (IAF)
+                                             NG102
+            002                TF                          -       302°         -         5.4          -        +3300        -           -        RNP APCH
+                                              (IF)
+                                             NG101
+            003                TF                          -       260°         -         4.7          -        +2300           -        -        RNP APCH
+                                             (FAF)
+
+            004                TF            RWY26         Y       260°         -         5.4          -        +565            -   3.00/50       RNP APCH
+
+
+            005                CA            RWY26         -       260°         -          -           R       @ 2000           -        -        RNP APCH
+
+
+            006                DF            LILKO         -            -       -          -           -        +6000        -           -        RNP APCH
+
+                                              LILKO                                                             +6000
+            007                HM                          -       250°         -          -          R                    180           -           RNP1
+                                             (MAHF)
+
+
+
+    10. Coding Table: SID THARA 1A RWY 08
+
+     Serial         Path        Waypoint                    Course/Track    Magnetic    Distance     Turn      Altitude   Speed     VPA/         Navigation
+                                                Flyover
+      No.         Descriptor    Identifier                     (°M)         Variation    (NM)      Direction     (ft)      (kts)    TCH         Specification
+
+
+      001            CA               -             -            080°           -           -         R        @1000        -        -             RNP-1
+      002            DF             NG301           -             -             -           -          -          -         -        -             RNP-1
+
+      003            TF             NG302           -            095°               -     20.8         -          -         -        -             RNP-1
+      004            TF             NG303                        097°               -     24.0         -       +11500       -        -             RNP-1
+      005            TF         THARA                            083°           -         18.9                    -         -        -             RNP-1
+
+
+
+    11. Coding Table: SID PUBOB 1A RWY08
+
+     Serial         Path        Waypoint                    Course/Track    Magnetic    Distance     Turn      Altitude   Speed     VPA/         Navigation
+                                                Flyover
+      No.         Descriptor    Identifier                     (°M)         Variation    (NM)      Direction     (ft)      (kts)    TCH         Specification
+
+
+      001            CA               -             -            080°           -           -         R        @1000        -        -             RNP-1
+      002            DF             NG301           -             -                 -       -          -          -         -        -             RNP-1
+      003            TF             NG302           -            095°               -     20.8         -          -         -        -             RNP-1
+      004            TF             NG303                        097°               -     24.0         -       +11500       -        -             RNP-1
+      005            TF             PUBOB                        054°           -         23.0                 +12000       -        -             RNP-1
+
+
+
+
+AMDT 06/2026                                                                             CIVIL AVIATION AUTHORITY OF NEPAL
+    AIP                                                                                                                                                               VNNG AD 2-29
+    NEPAL                                                                                                                                                               9 July 2026
+
+
+
+    12. Coding Table: SID THARA 1B RWY 26
+
+     Serial     Path       Waypoint                 Course          Magnetic          Distance              Turn             Altitude        Speed              VPA/       Navigation
+                                         Flyover
+      No.     Descriptor   Identifier                (°M)           Variation          (NM)               Direction            (ft)           (kts)             TCH       Specification
+
+
+      001        CA                -           -      260°                 -                 -                   L           @1000                 -              -          RNP-1
+
+      002        DF          NG301             -          -                -                 -                    -               -                -              -          RNP-1
+
+      003         TF         NG302                    095°                 -            20.8                     -                -               -               -          RNP-1
+
+      004         TF         NG303                    097°                 -            24.0                     -                -               -               -          RNP-1
+
+      005         TF        THARA              -      083°                 -               18.9                   -          +10500                -              -          RNP-1
+
+
+
+
+    13. Coding Table: SID PUBOB 1B RWY 26
+
+     Serial     Path       Waypoint                Course/Track           Magnetic         Distance               Turn           Altitude        Speed           VPA/       Navigation
+                                        Flyover
+      No.     Descriptor   Identifier                (°M/°T)              Variation         (NM)                Direction          (ft)           (kts)          TCH       Specification
+
+
+      001        CA            -           -          260°                     -                  -                   L          @1000                 -              -       RNP-1
+      002        DF         NG301          -                  -                -                  -                   -               -                -              -       RNP-1
+      003        TF         NG302                         095°                 -                 20.8                 -               -                -              -       RNP-1
+      004        TF         NG303                     097°                     -                 24.0                 -                                                       RNP-1
+      005        TF        PUBOB           -          054°                     -             23.0                     -          +12000                -              -       RNP-1
+
+
+
+    14. Coding Table: SID THARA 1C RWY 26
+
+     Serial     Path       Waypoint                Course         Magnetic         Distance               Turn            Altitude        Speed            VPA/            Navigation
+                                        Flyover
+      No.     Descriptor   Identifier               (°M)          Variation         (NM)                Direction           (ft)           (kts)           TCH            Specification
+
+
+      001        CA             -           -       260°              -                -                   R              @2000              -              -                RNP-1
+      002        DF         NG304           -         -               -                -                    -             +3300             200             -                RNP-1
+      003        TF         NG301                    137°             -               10.1                  -             +6500                                              RNP-1
+      003        TF         NG302                    095°             -               20.8                  -                -                                               RNP-1
+      004        TF         NG303                   097°              -               24.0                  -             +11500                                             RNP-1
+      005        TF         THARA           -       083°              -               18.9                  -                -               -              -                RNP-1
+
+
+
+
+AMDT 06/2026                                                                                 CIVIL AVIATION AUTHORITY OF NEPAL
+    AIP                                                                                                                           VNNG AD 2-30
+    NEPAL                                                                                                                           9 July 2026
+
+
+
+    15. Coding Table: SID PUBOB 1C RWY 26
+
+     Serial     Path       Waypoint               Course/Track   Magnetic    Distance     Turn      Altitude   Speed     VPA/      Navigation
+                                        Flyover
+      No.     Descriptor   Identifier               (°M/°T)      Variation    (NM)      Direction     (ft)      (kts)    TCH      Specification
+
+
+      001        CA            -           -         080°            -          -          R        @2000        -        -          RNP-1
+      002        DF         NG304          -           -             -          -           -       +3300       200       -          RNP-1
+      003        TF         NG301                     137°           -         10.1         -       +6500        -        -          RNP-1
+      003        TF         NG302                     095°           -         20.8         -          -         -        -          RNP-1
+      004        TF         NG303                    097°            -         24.0         -       +11550       -        -          RNP-1
+      005        TF        PUBOB           -         054°            -         23.0         -       +12000       -        -          RNP-1
+
+
+
+
+    16. Coding Table: SID IVSOM 1C RWY 08
+
+     Serial     Path       Waypoint               Course/Track   Magnetic    Distance     Turn      Altitude   Speed     VPA/      Navigation
+                                        Flyover
+      No.     Descriptor   Identifier                (°M)        Variation    (NM)      Direction     (ft)      (kts)    TCH      Specification
+
+
+      001        CA            -           -         080°            -          -          L        @1500        -        -          RNP-1
+      002        DF        IVSOM           -           -             -          -           -       +5500        -        -          RNP-1
+
+
+
+
+    17. Coding Table: SID IVSOM 1D RWY26 (TRANSIT TO THARA)
+
+     Serial     Path       Waypoint               Course/Track   Magnetic    Distance     Turn      Altitude    Speed    VPA/       Navigation
+                                        Flyover
+      No.     Descriptor   Identifier               (°M/°T)      Variation    (NM)      Direction     (ft)       (kts)   TCH       Specification
+
+
+      001        CA             -          -          260°               -       -          R        @2000           -        -       RNP-1
+      002        DF         IVSOM          -            -            -           -              -    +5500       180          -       RNP-1
+      003        TF         NG401                     083°           -         15.2         -        +7000           -        -       RNP-1
+      004        TF         NG402                     095°           -         20.6         -        +11500          -        -       RNP-1
+      005        TF        THARA           -          114°           -         43.0             -          -         -        -       RNP-1
+
+
+
+
+    18. Coding Table: SID IVSOM 1D RWY26 (TRANSIT TO PUBOB)
+
+     Serial     Path       Waypoint               Course/Track   Magnetic    Distance     Turn      Altitude    Speed    VPA/       Navigation
+                                        Flyover
+      No.     Descriptor   Identifier               (°M/°T)      Variation    (NM)      Direction     (ft)       (kts)   TCH       Specification
+
+
+      001        CA             -          -          260°               -       -          R        @2000           -        -       RNP-1
+      002        DF         IVSOM          -            -            -           -              -    +5500       180          -       RNP-1
+      003        TF         NG401                     083°           -         15.2         -        +7000           -        -       RNP-1
+      004        TF         NG402                     095°           -         20.6         -        +11500          -        -       RNP-1
+      005        TF         PUBOB          -          099°           -         39.7             -    +12000          -        -       RNP-1
+
+
+
+
+AMDT 06/2026                                                                     CIVIL AVIATION AUTHORITY OF NEPAL
+         AIP                                                                                                                                             VNNG AD 2-31
+         NEPAL                                                                                                                                             9 July 2026
+
+
+
+         19. Coding Table: SID ENVAD 1D RWY 08
+
+Serial               Path           Waypoint                    Course/Track     Magnetic     Distance        Turn      Altitude       Speed        VPA/      Navigation
+                                                 Flyover
+ No.                 Descriptor     Identifier                     (°M)          Variation     (NM)         Direction     (ft)          (kts)       TCH      Specification
+
+
+ 001                     CA               -             -             080°           -              -           R       @1000            -           -          RNP-1
+ 002                     DF         ENVAD               -              -             -              -           -        +5500           -           -          RNP-1
+
+
+
+
+         20. Coding Table: SID ENVAD 1E RWY 26
+
+                   Path       Waypoint                      Course/Track     Magnetic    Distance         Turn      Altitude   Speed         VPA/           Navigation
+  Serial No.                                  Flyover
+                 Descriptor   Identifier                       (°M)          Variation    (NM)          Direction     (ft)      (kts)        TCH           Specification
+
+
+       001          CA              -            -              260°             -            -            R        @1500          -            -             RNP-1
+       002          DF            NG501                           -              -            -             -       +4000          -            -             RNP-1
+       003          TF        ENVAD              -           092° (093°)         -           14.7           -       +5500          -            -             RNP-1
+
+
+
+
+AMDT 06/2026                                                                                  CIVIL AVIATION AUTHORITY OF NEPAL
+      AIP                                                                                                                                                           VNNG AD 2-32
+      NEPAL                                                                                                                                                           9 July 2026
+
+                                                                                                                         TW R1
+                                                                                                                             18.
+                                                                                                                               3MHz      NEPALGUNJ,NEPAL(VNNG)
+            STANDARDARRI VAL                        AERODROMEELEV51 8’
+                                                                                                                                             NEPALGUNJAI RPORT
+            CHART-I NSTRUMENT                       TRANSLEVEL:FL150
+                                                                                                                                                        RW Y08
+            (STAR)
+                 -ICAO                              TRANSALT:13,
+                                                               500FT                                                                                   TULVI1A
+               81°30'0"E                      81°40'0"E                                        81°50'0"E                     82°0'0"E         82°10'0"E                             82°20'0"E
+
+
+             - Bearings are Magnetic
+             - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                     180°
+                                                                                                                                                             '
+             - Distances are in nautical miles                                                                                                          00
+                                                                                                                                                                    17 DME
+
+
+
+
+                                                                                                                                                                               89
+                                                                                                                                                   63
+             - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                    00
+                                                                                                                                                                    5900'
+
+
+
+
+                                                                                                                                                                                    '
+                                                                                                                                                             090°            270°
+                                                                                                                                                                     A
+                                                                                                                                                                     ARP
+
+
+
+
+                                                                                                                                                                                                28°30'0"N
+28°30'0"N
+
+
+
+
+                                                                                                                                                                    5100'
+
+
+
+
+                                                                                                                                                               MSA
+                                                                                                                                                         25 NM FROM ARP
+
+                                                                                                                                                    GNSS REQUIRED
+                                                                                                                                                        RNP 1
+
+
+
+
+                                                                                                                                                                                                28°20'0"N
+28°20'0"N
+
+
+
+
+                                      070
+                                         ° <        KT
+                                            S  180
+                                        X IA 00'
+                                     MA     80
+                                                 0'
+                                             600 250°
+
+                                        {
+                                              <
+                                        !
+
+                            LILKO
+                                                                              29
+                                                                      <
+                                                                           15 7°
+
+
+
+
+                                                                                                                                                                                                28°10'0"N
+28°10'0"N
+
+
+
+
+                                                                             .1
+                                                                                NM                                                                                  TULVI
+
+                                                                                                             {
+                                                                                                                                                                    10500'
+                                                                                                             ! 302
+                                                                                          NG102              5.4 °
+                                                                                                               NM                                264°                         {
+                                                                                                                                                                              !
+
+                                                                                                                         {
+                                                                                                                     <                    <
+                                                                                                                                                18.2 NM
+                                                                                                                         !
+
+                                                                                                                             UPKOB
+                                                                                                                              6000'
+
+
+
+
+                                                                                                                                                                                                28°0'0"N
+                                                           KA
+28°0'0"N
+
+
+
+
+                                                             TH
+                                                                     M
+                                                                         AN
+                                                          DE                D
+                                                               LH               U
+
+
+
+
+                    .
+                                                                    IF               FI
+                                                                                          R
+                                                                      IR                      (V
+                                                                           (V                   NS
+                                                                                ID                   M
+                                                                                     F)                  )                                                                                      27°50'0"N
+
+
+
+
+                                Nautical Miles
+27°50'0"N
+
+
+
+
+               0   1.5      3         6        9           12
+
+
+                           Scale - 1:500,000
+                81°30'0"E                      81°40'0"E                                        81°50'0"E                     82°0'0"E         82°10'0"E                              82°20'0"E
+
+
+
+            STAR                             ROUTES
+
+            TULVI 1A                         From TULVI to UPKOB at or above 6000 ft then to NG102 then to LILKO at or above
+                                             6000 ft.
+
+
+
+
+            AMDT 06/2026                                                                                                      CIVIL AVIATION AUTHORITY OF NEPAL
+      AIP                                                                                                               VNNG AD 2-33
+      NEPAL                                                                                                               9 July 2026
+                                                                            T WR1
+                                                                                18.
+                                                                                  3MHz     NEPALGUNJ,NEPAL( VNNG)
+            ST ANDARDARRI  VAL               AERODROMEELEV51    8’
+                                                                                               NEPALGUNJAI  RPORT
+            CHART -I NST RUMENT              T RANSLEVEL: FL150
+                                                                                                           RWY26
+            (ST AR)
+                  -ICAO                      T RANSALT :13,
+                                                          500FT                                          T ULVI1B
+                        81°50'0"E                           82°0'0"E                      82°10'0"E
+
+
+             - Bearings are Magnetic
+             - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                         180°
+                                                                                                                 '
+             - Distances are in nautical miles                                                              00
+                                                                                                                        17 DME
+
+
+
+
+                                                                                                                                   89
+                                                                                                       63
+             - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                        00
+                                                                                                                        5900'
+
+
+
+
+                                                                                                                                        '
+                                                                                                                 090°            270°
+
+
+
+
+                                                                                                                                             28°20'0"N
+                                                                                                                         A
+28°20'0"N
+
+
+
+
+                                                                                                                         ARP
+
+                                                                                                                        5100'
+
+
+
+
+                                                                                                                   MSA
+                                                                                                             25 NM FROM ARP
+
+                                                                                                       GNSS REQUIRED
+                                                                                                           RNP 1
+
+
+
+
+                                                                                                                                             28°10'0"N
+28°10'0"N
+
+
+
+
+                                                                                                                        TULVI
+                                                                                                                        10500'
+                                                                   12
+                                                                    °<2
+                                                           MA
+                                                             XI                               264°                                       {
+                                                                                                                                         !
+                                                                AS                           18.2 NM
+                                                                                     <
+                                                              85 180
+                                                      {
+                                                      !         0
+                                                            55 0'      KT
+                                                               00
+                                        UPKOB                     '
+                                                               30
+                                                               <
+                                                                  2°
+
+
+
+
+                                                                                                                                             28°0'0"N
+             .
+28°0'0"N
+
+
+
+
+                              Nautical Miles
+                0   1     2         4        6    8       KATHMANDU
+                                                                    FI    R (VNSM)
+
+                         Scale - 1:300,000                 DELHI FIR (V
+                                                                          IDF)
+
+
+
+                         81°50'0"E                           82°0'0"E                      82°10'0"E
+
+
+
+            STAR                       ROUTES
+
+            TULVI 1B                   From TULVI to UPKOB at or above 5500 ft.
+
+
+
+
+            AMDT 06/2026                                                         CIVIL AVIATION AUTHORITY OF NEPAL
+      AIP                                                                                                                                                                               VNNG AD 2-34
+      NEPAL                                                                                                                                                                               9 July 2026
+            INSTRUMENT                               AERODROME ELEV 518'                                   TWR 118.3 MHz                                NEPALGUNJ, NEPAL (VNNG)
+            APPROCH                                                                                         LNAV/VNAV                                        NEPALGUNJ AIRPORT
+                                                     HEIGHT RELATED TO
+                                                                                                            Temp Range                                               RNP RWY 26
+            CHART- ICAO                              THR RWY-ELEV 515'
+                                                                                                            0° to 61° C                                    (LNAV/VNAV, LNAV Only)
+                                                             81°40'0"E                                                 81°50'0"E                                                        82°0'0"E
+
+
+             - Bearings are Magnetic
+
+
+
+
+                                                                                                                                                                                          180°
+             - Altitude,Elevation, Height in feet
+                                                                                                                                                                               0'
+             - Distances are in nautical miles
+                                                                                                                                                                                        17 DME
+                                                                                                                                                                           0
+
+
+
+
+                                                                                                                                                                                                        89
+                                                                                                                                                                        63
+             - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                                           0
+                                                                                                                                                                                         5900'
+
+
+
+
+                                                                                                                                                                                                           0'
+                                                                                                                                                                                090°                270°
+                                                                                                                                                                                          A
+
+
+
+
+                                                                                                                                                                                                                    28°20'0"N
+                                                                                                                                                                                          ARP
+28°20'0"N
+
+
+
+
+                                                                                                                                                                                         5100'
+
+
+
+                                        °            T
+                                     070
+                                                 <
+                                                  0K
+                                          IA S 18                                                                                                                                    MSA
+                                     MAX 8000'                                                                                                                                 25 NM FROM ARP
+                                                0'                            1 0 NM
+                                             600                                       ARP
+                                                    250
+                                                       °                                                                                                GNSS REQUIRED
+                                          {
+                                                      <
+                                                                                                                                                          RNP APCH
+                                          !
+
+                                                      LILKO
+
+
+
+
+                                                                                                                                                                                                                    28°10'0"N
+                                                                                                                     IF
+28°10'0"N
+
+
+
+
+                        <
+
+
+
+
+                                                                                                                   NG102
+                                                               632 640                                              3300'
+                                                                  SS
+                                                      637
+                                                       S                                                                    260° !   {
+                                                                                                      {
+                                                                         628
+                                                                                                                           4.7 NM
+                                                                                                                       <
+                                                                          S                                                                                                      12
+                                                                                260°
+                                                                                                      !
+                                                                                                                                                                               MA 2°
+                                    749
+                                                                    MAPt
+                                    S
+                                                                    K
+                                                                                       <
+                                                                               5.4 NM                                                                      3                     X
+                                                                                                                                                        5.4 02°
+                                                                                                                                                                                         <
+                                                                                                                                                        <
+                                                                    !                                           FAF                                                                IA
+                                                             08        26                                                                                   NM                         S
+                                                                                                                                                                                  85 180
+                                                                                                                                                                     {
+                                                                                                              NG101                                                                 0      KT
+                          KATurn altitude          618
+                                                                   606
+                                                                   S                                           2300'                                                 !          55 0'
+                             TH 2000'              S 669                        607
+                                                                                                                                                       IAF                        00
+                                 MA                                              S                                                                                                   '
+                                     N                 S                                                                                             UPKOB                         30
+                                                                                                                                                                                    <
+                        DE            D  U 677                                                                                                                                         2°
+                           LH              FIRS                                                                                                       5500'
+                              IF               (V
+                                 IR               NS
+                                    (V               M)
+                                       ID
+                                          F)
+                                                                                                                                                               No Turn before MAPt
+
+
+
+
+            .                                                                                                                                                      Nautical Miles
+
+
+
+                                                                                                                                                                                                                    28°0'0"N
+28°0'0"N
+
+
+
+
+                                                                                                                                                    0    1     2         4        6                          8
+
+
+             PAPI does not coincide with the final approach gradient                                                                                           Scale - 1:300,000
+                                                              81°40'0"E                                                 81°50'0"E                                                        82°0'0"E
+
+
+             Category                     CATA       CATB      CATC                        MISSED APPROACH :( Climb Graident 5 %)
+                                                                                           Climb straight on runway course at 2000 ft turn right direct to LILKO at or above 6000ft
+                            DA/
+                              DH                 770’(
+                                                     252’)                                 or follow the ATC instructions.
+            L
+            NAV/
+               VNAV                                                                                                                                                                                        UPKOB
+                             VI
+                              S*                  1100m                                                                                                                                                     (IAF)
+                                                                                                                                                                        NG102                               5500'
+                          MDA/
+                             MDH                 860’(
+                                                     342’)                                                                                                                (IF)
+                                                                                                                                            NG101                        3300'
+              L
+              NAV                                                                                                                           (FAF)
+                             VI
+                              S*                  1400m                                                                                      2300'
+                                                                                                               VDP
+                                                                                                                                                                                                    °
+                                                                                              RW26
+                                                                                                              0.9 NM                                                                             302
+                                          940’       1070’     1150’
+             CI
+              R CL
+                 ING         OCH                                                              MAPt
+                                          (
+                                          422’) (
+                                                552’) (
+                                                      632’)
+                                                                                                                                                                 °
+                             VI
+                              S*        2000m 2800m 3700m                                                                                                     260
+
+                * FOR ALS OUT, increase VIS by 400m
+                                                                                       <
+                                                                                       <
+
+
+
+
+                                                                                                                                                !
+                                                                                                                                                5
+
+
+
+
+                                                                                                                                            °
+                                                                                                                                         260
+                             FAF to MAPt: 5.4 NM                                                                               4%
+                   GS                     60      90         120    150                                                    5.2 °)
+                                                                                                                                 0
+                  Mi n:
+                      Sec                 5:
+                                           24     3:
+                                                   36        2:
+                                                              42    2:
+                                                                     09                                                      ( .
+                                                                                                                              3                                                          3100' (2582)
+                                                                                                                                                        2300' (1782')
+              F
+              eet/
+                 mi n @5.24%              318     477        636    796
+                                                                                                                           860' (342')
+                                                                  RWY 26
+                                                                  THR ELEV 515'                  <   0.9 NM      <         4.5 NM               <           4.7 NM             <             5.4 NM
+                                                                                                              <                                 <                       <                                    <
+
+            AMDT 06/2026                                                                                                      CIVIL AVIATION AUTHORITY OF NEPAL
+      AIP                                                                                                                                                                                                VNNG AD 2-35
+      NEPAL                                                                                                                                                                                               9 July 2026
+             INSTRUMENT                                       AERODROME ELEV 518'                                        TWR 118.3 MHz                                    NEPALGUNJ, NEPAL (VNNG)
+                                                                                                                          LNAV/VNAV                                            NEPALGUNJ AIRPORT
+             APPROCH                                          HEIGHT RELATED TO
+                                                                                                                          Temp Range                                                   RNP RWY 08
+             CHART- ICAO                                      THR RWY-ELEV 512'
+                                                                                                                          0° to 61° C                                        (LNAV/VNAV, LNAV Only)
+                                             81°30'0"E                                                                         81°40'0"E                                                                    81°50'0"E
+
+
+                - Bearings are Magnetic
+
+
+
+
+                                                                                                                                                                                                          180°
+                - Altitude,Elevation, Height in feet
+                                                                                                                                                                                                  '
+                - Distances are in nautical miles                                                                                                                                            00
+                                                                                                                                                                                                         17 DME
+
+
+
+
+                                                                                                                                                                                                                       89
+                                                                                                                                                                                        63
+                - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                                                            00
+                                                                                                                                                                                                         5900'
+
+
+
+
+                                                                                                                                                                                                                                  28°20'0"N
+                                                                                                                                                                                                                            '
+28°20'0"N
+
+
+
+
+                                                                                                                                                                                                  090°               270°
+                                                                                                                                                                                                          A
+                                                                                                                                                                                                          ARP
+
+
+                                                                                                         70°                                                                                             5100'
+                                                                                                              <0
+                                                                                                          0 KT
+                                                                                                   IA S 18
+                                                                                                MAX 000'
+                                                                                                     8                                                                                              MSA
+                                                                                                         0'                                        1 0 NM
+                                                                                                      600
+                                                                                                                                                                                              25 NM FROM ARP
+                                                                                                                                                            AR P
+                                                                                                                °
+                                                                                                             250                                                                       GNSS REQUIRED
+                                                                                                                     <
+                                                                                                       { !                                                                               RNP APCH
+
+
+                                                                                                                   LILKO
+                                                                       <
+                                                         °
+                    NG203                             250
+
+                                    {
+                                                           M
+                                                        8N
+                                    !
+
+
+                                                                                                                                                              <
+
+
+
+
+                                                                                                                                                                                                                                  28°10'0"N
+28°10'0"N
+
+
+
+
+                                                                                                                                 632 640
+                                                                                                                                  SS
+                                                       <
+
+
+
+
+                                                                                                                     637
+                                                                                                                     S                       628
+                                                        15 M
+
+
+
+
+                                                                                   IF
+                                                        8.0
+
+
+
+
+                                                                                                                                             S
+                                                          1°
+
+
+
+
+                                                                                 NG202
+                                                            N
+
+
+
+
+                .
+                                                                                               749
+                                                                                  2100'        S                     MAPt
+                                                                                               080° <                          K                     Turn altitu
+                                                                                                                                                                 de
+                                                                                                {
+                                                                                                                               !        26
+                                                                                        080° !                                 08
+                                                                                                                                                        2200'
+                                             KA
+                                               TH
+                                                       MA
+                                                                            {
+                                                                            !          <.2 NM 3.1 NM
+                                                                                       3
+                                                                                                                   618
+                                                                                                                                    606
+                                                                                                                                    S
+                                                            ND                                                     S                                  607
+                                         DE                    U                           FAF                           669                           S
+                                            L    HI                F IR                                                    S
+                                                      FIR                  (V             NG201
+                                                            (V I             NS                              677
+                                                                DF             M)          1600'             S
+                                                                   )                                                                                                    No Turn before MAPt
+                                        Nautical Miles
+            0        1          2             4                        6              8
+
+
+                                    Scale - 1:250,000                                                                PAPI does not coincide with the final approach gradient
+
+                                             81°30'0"E                                                                         81°40'0"E                                                                     81°50'0"E
+
+
+                                                                                                   Missed approach : ( Climb gradient 5.0%) Climb straight on runway course at 2200ft
+                                                                                                   left direct to LILKO at or above 6000 ft or follow the ATC instructions
+            LILKO
+             (IAF)                                                                                                                                                 Category                 CATA          CATB         CATC
+             6000'
+                                                                                                                                                                               DA/
+                                                                                                                                                                                 DH                      760’(
+                                                                                                                                                                                                             242’)
+                                         NG203
+                                                                                                                                                               L
+                                                                                                                                                               NAV/
+                                                                                                                                                                  VNAV
+                                                                             NG202
+                                                                               (IF)                                                                                             VI
+                                                                                                                                                                                 S*                       1500m
+                                                                              2100'            NG201
+                                                                                               (FAF)                                                                          MDA/
+                                                                                                                                                                                 MDH                     940’(
+                                                                                                                                                                                                             422’)
+                         24
+                           3°                                                                   1600'               VDP                                             L
+                                                                                                                                                                    NAV
+                                                                                                                   1.1 NM                                                       VI
+                                                                                                                                                                                 S*                       2000m
+                                                                                                                                        RW08
+                                                                                                                                        MAPt
+                                                                                                                                                                                O CH   940’(
+                                                                                                                                                                                           422’) 1070’(
+                                                                                                                                                                                                      552’) 1150’(
+                                                                                                                                                                                                                 632’)
+                                                        151
+                                                           °                                                                                                       CI
+                                                                                                                                                                    RCL
+                                                                                                                                                                      ING
+                                                                                                                                                                                VI
+                                                                                                                                                                                 S*         2000m         2800m        3700m
+                                                                                                                                                    <
+
+
+
+
+                                                                                      080
+                                                                                                                                                   <
+
+
+
+
+                                                                                         °                                                                                         FAF to MAPt: 3.1 NM
+                    1800' (1282')
+                                                                                                !(35..5%
+                                                                                                   5
+
+
+
+
+                                                                                                                                                                                GS            60  90             120        150
+                                                       1700' (1182')                                     20° 08                                                                Min :
+                                                                                                                                                                                   Sec        3:
+                                                                                                                                                                                               06 2:
+                                                                                                                                                                                                   04            1:
+                                                                                                                                                                                                                  33        1:
+                                                                                                                                                                                                                             14
+                                                                                                            ) 0°
+                                                                                    1200' (682')                                                                          F
+                                                                                                                                                                          e e t/
+                                                                                                                                                                               min @ 5 .
+                                                                                                                                                                                       5%     334 501            668        835
+                                                                                                       940' (422')                                      RWY 08
+                <        7.1 NM              <          8.0 NM                  <     3.2 NM         <   2.0 NM        <    1.1 NM                      THR ELEV 512'
+                                         <                                   <                 <                   <                      <
+
+
+
+            AMDT 06/2026                                                                                                                      CIVIL AVIATION AUTHORITY OF NEPAL
+      AIP                                                                                                                                                                 VNNG AD 2-36
+      NEPAL                                                                                                                                                                 9 July 2026
+                                                                                                                                            NEPALGU NJ
+                                                                                                                                                     ,NEPAL( VNNG)
+            STANDARD                                AERODROMEELEV51 8’ TWR1
+                                                                          18.
+                                                                            3MHz
+                                                                                                                                                NEPALGU NJAIRPORT
+            DEPARTU RECHART-                        TRANSLEVEL:FL150
+                                                                                                                                                            RWY26
+            INSTRU MENT(
+                       SID)
+                          -ICAO                     TRANSALT:13,
+                                                               500FT                                                                                      ENVAD1E
+
+                          81°35'0"E                81°40'0"E                         81°45'0"E                          81°50'0"E        81°55'0"E                          82°0'0"E
+
+
+             - Bearings are Magnetic
+             - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                         180°
+                                                                                                                                                                '
+             - Distances are in nautical miles                                                                                                             00
+                                                                                                                                                                        17 DME
+
+
+
+
+                                                                                                                                                                                     89
+                                                                                                                                                      63
+             - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                          00
+                                                                                                                                                                         5900'
+
+
+
+
+                                                                                                                                                                                           '
+
+
+
+
+                                                                                                                                                                                               28°25'0"N
+28°25'0"N
+
+
+
+
+                                                                                                                                                                090°               270°
+                                                                                                                                                                          A
+                                                                                                                                                                         ARP
+
+                                                                                                                                                                         5100'
+
+
+
+
+                                                                                                                                                                  MSA
+                                                                                                                                                            25 NM FROM ARP
+
+
+
+
+                                                                                                                                                                                               28°20'0"N
+                                                                                                                                                     GNSS REQUIRED
+28°20'0"N
+
+
+
+
+                                                                                                                                                         RNP 1
+
+
+
+
+                                                                                                                                                                                               28°15'0"N
+28°15'0"N
+
+
+
+
+                 <
+                                                                                                                                                                       ENVAD
+
+
+
+
+                                                                                                                                                                                               28°10'0"N
+28°10'0"N
+
+
+
+
+                                                     632 640
+                                                      SS                                               NG501
+                                             637                                                       4000'
+                                              S                628
+                                                               S                                                    092
+                                                                                                                                                                                088° {
+                                749
+                                 S                DER                                                             14.7 NM            <                               <               !
+                                                   08 26
+                                                                                                                                                                    MAX IAS 180 KT
+
+
+
+                                                                                                                                                                                               28°5'0"N
+28°5'0"N
+
+
+
+
+                                                       606
+
+                                                                                                                                                                         7500'
+                                            618
+                                            S 669       S               607
+                  TURN @ 1500'                                          S
+                                      677
+                                              S                                                                                                                          5500'
+                                      S
+                                                                                                                                                                                268°
+                                                                                                                                                                                           <
+
+
+
+
+                 .                                                      KA
+                                                                          TH
+                                                                                                                                                                                               28°0'0"N
+28°0'0"N
+
+
+
+
+                                                                                M
+                                                                                     AN
+                                                                   DE                   D
+                                                                                             U
+                          Nautical Miles                                LH                           FI
+             0    1.5     3            6                       9           I   FI                      R
+                                                                                 R                         (V
+                                                                                     (V                       N   SM
+                        Scale - 1:300,000                                               I   DF                      )
+                                                                                                 )
+                                                                                                                                                                                               27°55'0"N
+
+
+
+
+81°30'0"E                 81°35'0"E                 81°40'0"E                         81°45'0"E                          81°50'0"E        81°55'0"E                             82°0'0"E
+
+
+            SID NAME                               ROUTE
+
+            ENVAD 1E                               Climb straight on runway course at 1500 ft turn right direct to NG501 then to
+            (Climb Gradient @ 5%                   ENVAD at or above 5500 ft.
+            upto 1000' then 3.3%)
+
+
+
+
+            AMDT 06/2026                                                                                                  CIVIL AVIATION AUTHORITY OF NEPAL
+                AIP                                                                                                                          VNNG AD 2-37
+                NEPAL                                                                                                                          9 July 2026
+                                                                                                                     NEPALGUNJ,NEPAL(VNNG)
+                 STANDARD                                       AERODROMEELEV51 8’ TW R1
+                                                                                       18.
+                                                                                         3MHz
+                                                                                                                         NEPALGUNJAIRPORT
+                 DEPARTURECHART-                                TRANSLEVEL:FL150
+                                                                                                                                    RW Y08
+                 INSTRUMENT(
+                           SID)
+                              -ICAO                             TRANSALT:13,
+                                                                           500FT                                                  ENVAD1D
+                           81°40'0"E                    81°45'0"E             81°50'0"E           81°55'0"E               82°0'0"E                            82°5'0"E
+
+
+                 - Bearings are Magnetic
+                 - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                              180°
+
+
+
+
+                                                                                                                                                                      28°20'0"N
+    28°20'0"N
+
+
+
+
+                                                                                                                                      '
+                 - Distances are in nautical miles                                                                               00
+                                                                                                                                             17 DME
+
+
+
+
+                                                                                                                                                        89
+                                                                                                                            63
+                 - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                             00
+                                                                                                                                             5900'
+
+
+
+
+                                                                                                                                                             '
+                                                                                                                                      090°            270°
+                                                                                                                                              A
+                                                                                                                                              ARP
+
+                                                                                                                                             5100'
+
+
+
+
+                                                                                                                                        MSA
+
+
+
+
+                                                                                                                                                                      28°15'0"N
+                                                                                                                                  25 NM FROM ARP
+    28°15'0"N
+
+
+
+
+                                                                                                                              GNSS REQUIRED
+                                                                                                                                  RNP 1
+
+
+
+
+                                                                                                                     ENVAD
+
+
+
+
+                                                                                                                                                                      28°10'0"N
+    28°10'0"N
+
+
+
+
+                             632 640
+                              SS
+                 637
+                  S                     628
+                                        S
+S                            DER                                        <                                     <         088°                 {
+                                                                                                                                             !
+
+                           08 26
+                                              TURN @ 1000'
+                                                                                                                  MAX IAS 180 KT
+
+
+
+
+                                                                                                                                                                      28°5'0"N
+    28°5'0"N
+
+
+
+
+                               606
+                618               S
+                S
+                      669
+                                              607
+                                              S                                                                       7500'
+                       S                                                                                              5500'
+    S
+
+                                                                                                                       268°
+                                                                                                                                             <
+
+
+
+
+                                                                                                                                                                      28°0'0"N
+    28°0'0"N
+
+
+
+
+                      .
+                      0       1
+                                       Nautical Miles
+                                        2          4           6
+                                                                                                                      KATHMANDU FIR (VNSM)
+                                                                                                                                                                      27°55'0"N
+
+
+
+
+                                                                                                                         DELHI FIR (VIDF)
+    27°55'0"N
+
+
+
+
+                                   Scale - 1:250,000
+
+                            81°40'0"E                    81°45'0"E             81°50'0"E           81°55'0"E               82°0'0"E                               82°5'0"E
+
+
+                SID NAME                                       ROUTE
+
+                ENVAD 1D                                       Climb straight on runway course at 1000 ft turn right direct to ENVAD at or
+                (Climb Gradient @ 5.4%)                        above 5500 ft.
+
+
+
+
+                AMDT 06/2026                                                                     CIVIL AVIATION AUTHORITY OF NEPAL
+            AIP                                                                                                                                                         VNNG AD 2-38
+            NEPAL                                                                                                                                                         9 July 2026
+                                                                                                                                             NEPALGUNJ ,NEPAL(
+                                                                                                                                                             V NNG)
+            STANDARD                                            AERODROMEELEV 518’ TWR1
+                                                                                      18.
+                                                                                        3MHz
+                                                                                                                                                 NEPALGUNJAI RPORT
+            DEPARTURECHART-                                     TRANSLEV EL:
+                                                                           FL150
+                                                                                                                                                   RWY 08
+            INSTRUMENT(
+                      SID)
+                         -ICAO                                  TRANSALT:13,
+                                                                           500FT                                                                   IVSOM 1C
+
+                        81°30'0"E                                   81°35'0"E                               81°40'0"E                             81°45'0"E
+
+
+
+
+                                                                                                                                                                                             28°25'0"N
+28°25'0"N
+
+
+
+
+             - Bearings are Magnetic
+             - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                         180°
+                                                                                                                                                               '
+             - Distances are in nautical miles                                                                                                            00
+                                                                                                                                                                        17 DME
+
+
+
+
+                                                                                                                                                                                   89
+                                                                                                                                                     63
+             - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                        00
+                                                                                                                                                                        5900'
+
+
+
+
+                                                                                                                                                                                        '
+                                                                                                                                                               090°              270°
+                                                                                                                                                                         A
+                                                                                                                                                                         ARP
+
+                                                                                                                                                                        5100'
+
+
+
+
+                                                                                                                                                                 MSA
+
+
+
+
+                                                                                                                                                                                             28°20'0"N
+28°20'0"N
+
+
+
+
+                                                                                                                                                           25 NM FROM ARP
+
+                                                                                                                                                      GNSS REQUIRED
+                                                                                                                                                          RNP 1
+                                                           MAX 500'
+
+
+
+
+                                                                                                    IVSOM
+                                                              < 16
+                                                              IAS
+                                                               8
+                                                                550
+
+                                                                  170
+
+                                                                                0°
+                                                     <
+                                                                    0'
+
+
+
+
+                                                                                    {
+
+
+
+
+                                                                                                                                                                                             28°15'0"N
+28°15'0"N
+
+
+
+
+                                                     340
+
+
+
+                                                                       KT
+
+
+
+
+                                                                                    !
+                                                         °
+
+
+
+
+                                                                                                                                                                   <
+
+
+
+
+                                                                                                                                                                                             28°10'0"N
+28°10'0"N
+
+
+
+
+                                                                                                              632 640
+                                                                                                               SS
+
+                                                                                                637
+                                                                                                  S
+
+
+
+
+                                    .
+                                                                                                                         628
+                                                                                                                         S
+
+                                                                                                                                                                   0'
+                                                                            749
+                                                                                S                              DER                                @ 150
+                                                                                                                 26                      TURN
+                                                                                                            08
+                    KA
+                                                                                                                                                                                             28°5'0"N
+
+
+
+
+                      TH
+28°5'0"N
+
+
+
+
+                                                                                                                 606
+                               MA                                                             618                 S
+                  DE                 ND                                                       S                                    607
+                                                                                                                                                Nautical Miles
+                       LH                 U                                                                                        S
+                          I                   F IR                                                    669
+                                                                                                      S
+                                                                                                                               0         1      2            4                           6
+                              FIR                    (V
+                                    (VI                   NS                            677
+                                       D   F)                  M)                       S
+                                                                                                                                              Scale - 1:200,000
+                         81°30'0"E                                  81°35'0"E                                81°40'0"E                             81°45'0"E
+
+
+            SID NAME                                            ROUTE
+
+            IVSOM 1C                                                                Climb straight on runway course at 1500 ft turn left direct to
+            (Climb Gradient @ 5.0% upto 3000' then                                  IVSOM at or above 5500 ft.
+            3.3%)
+
+
+
+
+            AMDT 06/2026                                                                                            CIVIL AVIATION AUTHORITY OF NEPAL
+            AIP                                                                                                                                                                 VNNG AD 2-39
+            NEPAL                                                                                                                                                                 9 July 2026
+             ST ANDARDDEPART URE AERODROMEELEV51                                                                      T WR1
+                                                                                                                          18.
+                                                                                                                            3MHz                NEPALGUNJ ,NEPAL(
+                                                                                                                                                                VNNG)
+                                                    8’
+             CHART -                                                                                                                                EALJAI
+                                 T RANSLEVEL: FL150
+             INST RUMENT (
+                         SID)
+                            -                                                                                                                       RWY26
+                                 T RANSALT :13,
+                                              500FT
+             ICAO                                                                                                                                   IVSOM 1D
+
+            81°30'0"E                81°40'0"E     81°50'0"E            82°0'0"E        82°10'0"E                   82°20'0"E      82°30'0"E     82°40'0"E                  82°50'0"E              83°0'0"E
+
+
+               - Bearings are Magnetic
+               - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                                 180°
+
+
+
+
+                                                                                                                                                                                                              28°40'0"N
+28°40'0"N
+
+
+
+
+                                                                                                                                                                        '
+               - Distances are in nautical miles                                                                                                                   00
+                                                                                                                                                                                17 DME
+
+
+
+
+                                                                                                                                                                                              89
+                                                                                                                                                              63
+               - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                                   00
+                                                                                                                                                                                5900'
+
+
+
+
+                                                                                                                                                                                                   '
+                                                                                                                                                                        090°                270°
+                                                                                                                                                                                  A
+                                                                                                                                                                                 ARP
+
+                                                                                                                                                                                5100'
+
+
+
+
+                                                                                                                                                                                                              28°30'0"N
+28°30'0"N
+
+
+
+
+                                                                                                                                                                          MSA
+                                                                                                                                                                    25 NM FROM ARP
+                                                                NG401                                               NG402
+
+
+
+
+                                                                                                                                                                                                              28°20'0"N
+                                                                                                                                                              GNSS REQUIRED
+28°20'0"N
+
+
+
+
+                                                                 7000'                                              11500'
+               MA 8500
+
+
+
+
+                                                                                                                                                                  RNP 1
+                160
+
+
+
+
+                                                          {
+                  X IA
+
+
+
+
+                                                                       095°
+                    °
+
+
+
+
+                                          083°<
+                         <
+
+
+
+
+                            {                                                                                 {
+                      550 340
+
+                      S
+
+
+
+
+                                                          !
+                                                                     20.6 NM
+               <
+
+
+
+
+                                                                                    <
+                        170
+
+
+
+
+                                         15.2 NM
+                         0'
+                         '
+
+
+
+
+                             !                                                                                !
+                                                                                                                                                                                           PUBOB
+                            KT
+
+
+
+
+                                                                                                                                                        099°                               12000'
+                               °
+
+
+
+
+                                    IVSOM                                                                                                        <
+
+
+
+
+                                                                                                                                                                                                              28°10'0"N
+                                     5500'                                                                                                            39.7 NM
+28°10'0"N
+
+
+
+
+                                                                                                                                                                                                      {
+                                                                                                                                                                                                      !
+                 <
+
+
+
+
+                                                                                                                                                 <
+                                         DER
+                                                                                                                                                           114
+                                                                                                                                                       43.     °
+                                   @ 2000 ft.                                                                                                             0N
+                         TURN                                                                                                                                 M
+
+
+
+
+                                                                                                                                                                                                              28°0'0"N
+28°0'0"N
+
+
+
+
+                                                                                                                                                                                                        {
+
+                .
+                                                                                                                                                                                                        !
+                                                                                                                                                                                        THARA
+                                                                                        KA
+                                                                                          TH
+                                                                                               MA
+                                                                                                 ND
+
+
+
+
+                                                                                                                                                                                                              27°50'0"N
+                                                                                                          U
+                                                                                                              FIR
+27°50'0"N
+
+
+
+
+                                                                                        DE
+                                                                                           L   HI                   (V
+                                                                                                    FIR                NS
+                           Nautical Miles                                                                 (V              M   )
+                                                                                                               ID
+                   0 2.5 5       10      15                     20                                               F)
+
+
+
+
+                                                                                                                                                                                                              27°40'0"N
+                                   Scale - 1:850,000
+27°40'0"N
+
+
+
+
+             81°30'0"E               81°40'0"E      81°50'0"E            82°0'0"E        82°10'0"E                    82°20'0"E     82°30'0"E     82°40'0"E                    82°50'0"E             83°0'0"E
+
+
+
+                                                                                                                                  VISIBILITY MINIMA REQUIRED :1600m
+
+
+             S
+             IDNAME                                              ROUT
+                                                                    E
+             IVSOM 1D
+                                                                     Climb on runway heading then turn right at 2000 ft then proceed
+             Climb Gradient @5%
+                                                                     direct to IVSOM at or above 5500ft
+             upto 5000’ then 3.3%
+            Transit to Join Route W41 and W17
+            Tra
+              n sit toj
+                      oin W 41a
+                              t                                      From IVSOM track to NG401at or above 7000 ft then NG402 at or
+            PUBOB.                                                   above 11500 ft then to PUBOB at or above 12000ft to join W41.
+            T
+            ran sit toJ
+                      oin W 17a
+                              t                                  From IVSOM track to NG401at or above 7000 ft then NG402 at or
+            T
+            HARA.                                                above 11500 ft then to THARA to join W17.
+
+
+
+
+        AMDT 06/2026                                                                                                                CIVIL AVIATION AUTHORITY OF NEPAL
+            AIP                                                                                                                                                                  VNNG AD 2-40
+            NEPAL                                                                                                                                                                  9 July 2026
+             STANDARD DEPARTURE                                                                                TWR 118.3 MHz                    NEPALGUNJ, NEPAL (VNNG)
+                                                          AERODROME ELEV 518’
+             CHART-                                                                                                                                 NEPALGUNJ AIRPORT
+                                                          TRANS LEVEL :FL 150
+             INSTRUMENT (SID)-                                                                                                                                   RWY 08
+                                                          TRANS ALT : 13,500 FT                                                                      THARA 1A/PUBOB 1A
+             ICAO
+             81°40'0"E             81°50'0"E          82°0'0"E        82°10'0"E                    82°20'0"E            82°30'0"E              82°40'0"E                   82°50'0"E              83°0'0"E
+
+
+
+
+                                                                                                                                                                                                             28°40'0"N
+28°40'0"N
+
+
+
+
+                 - Bearings are Magnetic
+                 - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                                   180°
+                                                                                                                                                                       '
+                 - Distances are in nautical miles                                                                                                                00
+                                                                                                                                                                               17 DME
+
+
+
+
+                                                                                                                                                                                              89
+                                                                                                                                                             63
+                 - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                                 00
+                                                                                                                                                                                5900'
+
+
+
+
+                                                                                                                                                                                                 '
+                                                                                                                                                                       090°               270°
+                                                                                                                                                                                   A
+
+
+
+
+                                                                                                                                                                                                             28°30'0"N
+                                                                                                                                                                                   ARP
+28°30'0"N
+
+
+
+
+                                                                                                                                                                                5100'
+
+
+
+
+                                                                                                                                                                         MSA
+                                                                                                                                                                   25 NM FROM ARP
+
+
+
+
+                                                                                                                                                                                                             28°20'0"N
+28°20'0"N
+
+
+
+
+                                                                                                                                                             GNSS REQUIRED
+                                                                                                                                                                 RNP 1
+
+
+
+                                                                                                                                                                                          PUBOB
+
+
+
+
+                                                                                                                                                                                                             28°10'0"N
+                                                                                                                                                                                          12000'
+
+                                                                                                                                                                                                      {
+28°10'0"N
+
+
+
+
+                                                                                                                                                                                                      !
+                 DER
+                  26
+            08                                                                                                                                                                    4°
+                               <
+
+
+
+
+                                                                                                                                                                                05 NM
+                                        NG301                                                                                                                                       .0
+                                                                                                                                                                               < 23
+                                   {
+
+
+
+
+                                                                                                                                                                                                             28°0'0"N
+                                                                                   NG302
+                                                                                                                                                                                          THARA
+28°0'0"N
+
+
+
+
+                                                  095°
+
+                                                                             {
+                                                                                                                                      NG303
+                                   !
+
+                                                                                                                                                                                                      {
+                                                20.8 NM     <
+                                                                              !                             097°                      11500'                                           083°           !
+
+                                                                                                                                                {
+                                                                                                          24.0 NM   <                                                          <
+                                                                                                                                                !                                   18.9 NM
+                                                                           KA
+                                                                             TH
+                                                                                   MA
+
+
+
+
+                                                                                                                                                                                                             27°50'0"N
+                                                                                     ND
+
+
+
+
+                         .
+27°50'0"N
+
+
+
+
+                                                                        DE                     U
+                                                                          LH                       FI
+                                                                                  IF                 R
+                                                                                                           (V
+                                                                                       IR                    NS
+                                                                                            (V                 M)
+                                                                                               ID
+                                                                                                  F   )
+
+
+
+
+                                                                                                                                                                                                             27°40'0"N
+27°40'0"N
+
+
+
+
+                                   Nautical Miles
+                  0      2.5   5         10       15             20
+
+
+                               Scale -1:750,000
+                                                                                                                                                                                                             27°30'0"N
+27°30'0"N
+
+
+
+
+             81°40'0"E              81°50'0"E             82°0'0"E     82°10'0"E                      82°20'0"E           82°30'0"E              82°40'0"E                    82°50'0"E               83°0'0"E
+
+
+
+            SID NAME                                         Route
+
+            THARA 1A                                         Climb straight on runway course at 1000 ft turn right direct to NG301
+            (Climb Gradient @ 3.3%)                          then to NG302 then to NG303 at or above 11500 ft then to THARA to
+                                                             join W17.
+
+            PUBOB 1A                                         Climb straight on runway course at 1000 ft turn right direct to NG301
+            (Climb Gradient @ 3.3%)                          then to NG302 then to NG303 at or above 11500 ft then to PUBOB at or
+                                                             above 12000 ft to join W41.
+
+
+
+            AMDT 06/2026                                                                                                CIVIL AVIATION AUTHORITY OF NEPAL
+        AIP                                                                                                                                                                           VNNG AD 2-41
+        NEPAL                                                                                                                                                                           9 July 2026
+             S TANDARDDEPARTURE AERODROMEELEV51                                                                  TWR1
+                                                                                                                    18.
+                                                                                                                      3MHz                                NEPALGUNJ,NEPAL(VNNG)
+                                                 8’
+             CHART-                                                                                                                                           NEPALGUNJAIRPORT
+                                TRANS LEVEL:FL150
+             INS TRUMENT(
+                        SID)
+                           -                                                                                                                                             RWY26
+                                TRANS ALT:13,
+                                            500FT                                                                                                              THARA1B/PUBOB1B
+             ICAO
+
+                 81°40'0"E             81°50'0"E          82°0'0"E       82°10'0"E                   82°20'0"E                   82°30'0"E            82°40'0"E      82°50'0"E                 83°0'0"E
+
+
+               - Bearings are Magnetic
+
+
+
+
+                                                                                                                                                                                                                28°40'0"N
+               - Altitude,Elevation, Height in feet
+
+
+
+
+                                                                                                                                                                                      180°
+28°40'0"N
+
+
+
+
+                                                                                                                                                                              '
+               - Distances are in nautical miles                                                                                                                         00
+                                                                                                                                                                                     17 DME
+
+
+
+
+                                                                                                                                                                                                89
+                                                                                                                                                                    63
+               - Mag.Var.0 ° E
+
+
+
+
+                                                                                                                                                                                                     00
+                                                                                                                                                                                     5900'
+
+
+
+
+                                                                                                                                                                                                     '
+                                                                                                                                                                              090°            270°
+                                                                                                                                                                                      A
+                                                                                                                                                                                      ARP
+
+                                                                                                                                                                                     5100'
+
+
+
+
+                                                                                                                                                                                                                28°30'0"N
+28°30'0"N
+
+
+
+
+                                                                                                                                                                                MSA
+                                                                                                                                                                          25 NM FROM ARP
+
+                                                                                                                                                                    GNSS REQUIRED
+
+
+
+
+                                                                                                                                                                                                                28°20'0"N
+28°20'0"N
+
+
+
+
+                                                                                                                                                                        RNP 1
+
+
+
+
+                                                                                                                                                                                          PUBOB
+
+
+
+
+                                                                                                                                                                                                                28°10'0"N
+                                                                                                                                                                                          12000'
+
+                                                                                                                                                                                                     {
+28°10'0"N
+
+
+
+
+                           ft.
+                       000
+                  at 1
+                                                                                                                                                                                                     !
+            Tur n
+                      DER
+
+                                                                                                                                                                                      4°
+                                                                                                                                                                                    05 NM
+                                           NG301                                                                                                                                       .0
+                                                                                                                                                                                  < 23
+                                       {
+                     <
+
+
+
+
+                                                                                                                                                                                                                28°0'0"N
+                                                      095°                            NG302                                                                                               THARA
+28°0'0"N
+
+
+
+
+                                                                                {
+                                                                                                                                             NG303
+                                       !
+                                                                                                                                                                                                     {
+                                                    20.8 NM     <
+                                                                                !                      097°                                  11500'                                  083°            !
+                                                                                                     24.0 NM
+                                                                                                                                                       {
+                                                                                                                             <                                                    < 18.9 NM
+                                                                                                                                                       !
+                                                                            KA
+                                                                              TH
+                                                                                     MA
+
+
+
+
+                                                                                                                                                                                                                27°50'0"N
+                                                                                       ND
+27°50'0"N
+
+
+
+
+                                                                           DE                    U
+
+
+
+                          .
+                                                                                LH                   FI
+                                                                                     IF                R
+                                                                                          IR                 (V
+                                                                                                                N   SM
+                                                                                               (V
+                                                                                                  ID                     )
+                                                                                                     F   )
+
+
+
+
+                                                                                                                                                                                                                27°40'0"N
+27°40'0"N
+
+
+
+
+                                   Nautical Miles
+                 0       2.5   5         10       15            20
+                                                                             FOR CAT A AND CAT B ONLY
+                                                                                                                                                                                                                27°30'0"N
+27°30'0"N
+
+
+
+
+                               Scale -1:800,000
+
+                  81°40'0"E             81°50'0"E             82°0'0"E    82°10'0"E                    82°20'0"E                   82°30'0"E            82°40'0"E             82°50'0"E              83°0'0"E
+
+
+
+            SID NAME                                           Route
+
+            THARA 1B              Climbing on runway course and left turn at 1000 ft AMSL. Then direct
+            (Climb Gradient @ 5% to NG301 then to NG302 then to NG303 at or above 11500 ft. then to
+            upto 1000' then 3.3%) THARA.
+
+            PUBOB 1B              Climbing on runway heading and left turn at 1000 ft AMSL. Then direct
+            (Climb Gradient @ 5% to NG301 then to NG302 then to NG303 at or above 11500 ft. then to
+            upto 1000' then 3.3%) PUBOB at or above 12000 ft.
+
+
+
+            AMDT 06/2026                                                                                                         CIVIL AVIATION AUTHORITY OF NEPAL
+        AIP                                                                                                                                                                              VNNG AD 2-42
+        NEPAL                                                                                                                                                                              9 July 2026
+              STANDARD DEPARTURE                                                                            TWR 118.3 MHz                                NEPALGUNJ, NEPAL (VNNG)
+                                                             AERODROME ELEV 518’
+              CHART-                                                                                                                                         NEPALGUNJ AIRPORT
+                                                             TRANS LEVEL :FL 150
+              INSTRUMENT (SID)-                                                                                                                                           RWY 26
+                                                             TRANS ALT : 13,500 FT                                                                            THARA 1C/PUBOB 1C
+              ICAO
+       81°30'0"E           81°40'0"E            81°50'0"E         82°0'0"E    82°10'0"E                82°20'0"E                    82°30'0"E        82°40'0"E             82°50'0"E              83°0'0"E
+
+
+                - Bearings are Magnetic
+
+
+
+
+                                                                                                                                                                                                                  28°40'0"N
+                                                                                                                                                                                        180°
+                - Altitude,Elevation, Height in feet
+28°40'0"N
+
+
+
+
+                                                                                                                                                                               '
+                - Distances are in nautical miles                                                                                                                         00
+                                                                                                                                                                                       17 DME
+
+
+
+
+                                                                                                                                                                                                  89
+                                                                                                                                                                     63
+
+
+
+
+                                                                                                                                                                                                       00
+                - Mag.Var.0 ° E                                                                                                                                                         5900'
+
+
+
+
+                                                                                                                                                                                                       '
+                                                                                                                                                                               090°             270°
+                                                                                                                                                                                         A
+                                                                                                                                                                                        ARP
+
+
+
+
+                                                                                                                                                                                                                  28°30'0"N
+                                                                                                                                                                                        5100'
+28°30'0"N
+
+
+
+
+                                                                                                                                                                                 MSA
+                                                                                                                                                                           25 NM FROM ARP
+
+
+
+
+                                                                                                                                                                                                                  28°20'0"N
+                                                                                                                                                                      GNSS REQUIRED
+28°20'0"N
+
+
+
+
+                                                                                                                                                                          RNP 1
+
+
+
+                                        NG304                                                                                                                                              PUBOB
+
+
+
+
+                                                                                                                                                                                                                  28°10'0"N
+                                         3300'                                                                                                                                             12000'
+                                                                                                                                                                                                       {
+28°10'0"N
+
+
+
+
+                               {
+                                                                                                                                                                                                       !
+                  <
+
+
+
+
+                               !
+                                DER                   NG301                                                                                                                               4°
+                    Turn at 2000 ft.                   6500'                                                                                                                            05 NM
+                                                                                                                                                                                           .0
+                                        < 10.
+
+
+
+
+                                                                                           NG302                                                                                      < 23
+                                         13 NM
+
+
+
+
+                                                {
+                                           7°
+
+
+
+
+                                                                                                                                                                                                                  28°0'0"N
+                                             1
+
+
+
+
+                                                          095°
+28°0'0"N
+
+
+
+
+                                                                                                                                                                                           THARA
+                                                                                      {
+                                                 !                                                                                              NG303
+                                                                                                                                                                                                       {
+                                                        20.8 NM      <
+                                                                                      !                     097°                                11500'                                 083°            !
+                                                                                                                                                         {
+                                                                                                          24.0 NM              <                                                    < 18.9 NM
+                                                                                KA
+                                                                                                                                                         !
+                                                                                  TH
+                                                                                          MA
+
+
+
+
+                                                                                                                                                                                                                  27°50'0"N
+                                                                                            ND
+27°50'0"N
+
+
+
+
+                                                                                 DE                   U
+                                                                                      LH                  FI
+                                                                                                            R
+                                                                                           IF                      (V
+
+
+
+
+                         .
+                                                                                                IR                    N   SM
+                                                                                                     (V
+                                                                                                        ID                     )
+                                                                                                           F   )
+
+
+
+
+                                                                                                                                                                                                                  27°40'0"N
+27°40'0"N
+
+
+
+
+                             Nautical Miles
+                   0 2.5 5         10      15                20
+                                                                                                                                                                                                                  27°30'0"N
+27°30'0"N
+
+
+
+
+                           Scale -1:850,000
+
+            81°30'0"E       81°40'0"E            81°50'0"E         82°0'0"E    82°10'0"E                  82°20'0"E                   82°30'0"E          82°40'0"E                 82°50'0"E           83°0'0"E
+
+
+
+
+             SID NAME                                         Route
+
+             THARA 1C              Climbing on runway course and right turn at 2000 ft. Then direct to
+             (Climb Gradient @ 5% NG304 at or above 3300 ft then to NG301 at or above 6500ft then to
+             upto 1000' then 3.3%) NG302 then NG303 at or above11500 ft then to THARA.
+
+             PUBOB 1C              Climbing on runway course and right turn at 2000 ft AMSL. Then direct
+             (Climb Gradient @ 5% to NG304 at or above 3300 ft then to NG301 at or above 6500ft then to
+             upto 1000' then 3.3%) NG302 then NG303 at or above11500 ft then to PUBOB at or above
+                                   12000 ft.
+
+
+
+              AMDT 06/2026                                                                                                         CIVIL AVIATION AUTHORITY OF NEPAL
+
